@@ -1,16 +1,13 @@
 var options = {
   strings: [
     '<span class="typed-python">Python</span>', 
-    '<span class="typed-ml">ML</span>',
-    '<span class="typed-ds">Data Science</span>',
+    '<span class="typed-ml">C</span>',
+    '<span class="typed-ds">Java</span>',
     '<span class="typed-django">Django</span>', 
     '<span class="typed-laravel">Laravel</span>',
     '<span class="typed-html">HTML</span>,<span class="typed-css">CSS</span>,<span class="typed-js">JS</span>',
-    '<span class="typed-mongo">MongoDB</span>',
-    '<span class="typed-sql">MySQL</span>',
-    '<span class="typed-pbi">PowerBI</span>',
-    '<span class="typed-ds">Selenium</span>',
-    
+    '<span class="typed-mongo">OracleDB</span>',
+    '<span class="typed-sql">MySQL</span>',    
   ],
   typeSpeed: 50,
   backSpeed: 10,
