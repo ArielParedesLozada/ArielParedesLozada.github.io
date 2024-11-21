@@ -18,16 +18,38 @@ fetch('https://api.github.com/users/ArielParedesLozada/repos')
                         <h3 class="card-title d-flex" style="justify-content: space-between;">
                         ${dato.name}    
                         </h3>
-                        <!--
-                        <span>Skills:
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain.svg"
-                                height="20" width="20" alt="" srcset="">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain.svg" height="20"
-                                width="20" alt="" srcset="">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                                height="20" width="20" alt="" srcset="">
+                        <span id="skills-${dato.name}">Skills:
+                    ${fetch('https://api.github.com/repos/ArielParedesLozada/' + dato.name + '/languages')
+                    .then(res => {
+                        if (!res.ok) {
+                            throw new Error("Error al obtener los lenguajes")
+                        }
+                        return res.json()
+                    })
+                    .then(dats => {
+                        let skillsPlaceholder = document.getElementById('skills-' + dato.name)
+                        let outS = ""
+                        Object.keys(dats).forEach(lang => {
+                            let langLow = lang.toLowerCase()
+                            switch (langLow) {
+                                case 'html':
+                                    langLow = 'html5'
+                                    break;
+                                case 'css':
+                                    langLow = 'css3'
+                                    break
+                                default:
+                                    break;
+                            }
+                            outS += `
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${langLow}/${langLow}-plain.svg"
+                                        height="20" width="20" alt="" srcset="">
+                                    `
+                        })
+                        skillsPlaceholder.innerHTML = outS
+                    })
+                }
                         </span>
-                        -->
     
                         <p class="card-desc">${dato.description}</p>
                         <div class="card-footer d-flex space-between">
