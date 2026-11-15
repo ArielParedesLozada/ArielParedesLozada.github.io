@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Screenshot pending">
+  <rect width="1200" height="675" fill="#161b22"/>
+  <rect x="1" y="1" width="1198" height="673" fill="none" stroke="#30363d" stroke-width="2"/>
+  <text x="600" y="337" fill="#5277c3" font-family="monospace" font-size="42" text-anchor="middle" dominant-baseline="middle">Screenshot pending</text>
+</svg>

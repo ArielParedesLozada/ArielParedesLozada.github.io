@@ -1,1 +1,104 @@
-/* filled in Task 4: section grid and page layout */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  width: auto;
+  height: auto;
+  clip: auto;
+  background: var(--bg-elevated);
+  color: var(--fg);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  z-index: 200;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+.site-nav nav {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  list-style: none;
+}
+
+.nav-toggle-label {
+  display: none;
+}
+
+main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.window-section {
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+  color: var(--fg-muted);
+  font-size: var(--step--1);
+}
+
+@media (min-width: 60rem) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+@media (max-width: 40rem) {
+  .nav-toggle-label {
+    display: inline-block;
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+  }
+
+  .nav-toggle-input:checked ~ .nav-list {
+    display: flex;
+  }
+}
