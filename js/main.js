@@ -1,6 +1,7 @@
 import { mountAll } from './render.js';
 import { initTerminal } from './terminal.js';
 import { initContact } from './contact.js';
+import { initUi } from './ui.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   mountAll(document);
@@ -9,6 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
   if (terminalRoot) initTerminal(terminalRoot);
 
   initContact(document);
-
-  // Task 7 (UI behaviour) wires in here.
+  initUi(document);
 });
