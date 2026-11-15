@@ -154,6 +154,22 @@ export function renderEvents() {
 
 export function renderContact() {
   return `
+    <form id="contact-form" data-endpoint="PLACEHOLDER_PAPU" novalidate>
+      <p role="status" id="contact-status" aria-live="polite"></p>
+      <div class="form-field">
+        <label for="contact-name">Name</label>
+        <input type="text" id="contact-name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="email" required autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" required autocomplete="off"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
     <ul class="contact-links">
       <li><a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a></li>
       <li><a href="mailto:${escapeHtml(profile.universityEmail)}">${escapeHtml(profile.universityEmail)}</a></li>

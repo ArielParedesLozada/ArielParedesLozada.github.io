@@ -124,6 +124,34 @@
   list-style: none;
   display: grid;
   gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.form-field {
+  display: grid;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.form-field label {
+  font-size: var(--step--1);
+  color: var(--fg-muted);
+}
+
+.form-field input,
+.form-field textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  color: var(--fg);
+  font-family: var(--font-sans);
+}
+
+.cv-note {
+  font-size: var(--step--1);
+  color: var(--fg-muted);
+  margin-top: var(--space-2);
 }
 
 .noscript-notice {

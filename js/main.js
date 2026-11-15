@@ -1,5 +1,6 @@
 import { mountAll } from './render.js';
 import { initTerminal } from './terminal.js';
+import { initContact } from './contact.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   mountAll(document);
@@ -7,5 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const terminalRoot = document.getElementById('terminal-root');
   if (terminalRoot) initTerminal(terminalRoot);
 
-  // Task 6 (contact/CV), Task 7 (UI behaviour) wire in here.
+  initContact(document);
+
+  // Task 7 (UI behaviour) wires in here.
 });
