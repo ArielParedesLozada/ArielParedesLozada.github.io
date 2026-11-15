@@ -148,6 +148,15 @@
   font-family: var(--font-sans);
 }
 
+.hero-photo {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  margin-bottom: var(--space-4);
+}
+
 .cv-note {
   font-size: var(--step--1);
   color: var(--fg-muted);
