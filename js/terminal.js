@@ -11,7 +11,7 @@ const MAX_ECHO = 40;
 
 // Subsections are anchors on their section's page.
 const SECTIONS = {
-  about: ['hobbies', 'cv'],
+  about: ['cv'],
   skills: [],
   education: ['uni', 'certs'],
   experience: ['events'],

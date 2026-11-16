@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { render as renderSkills } from '../src/sections/skills.js';
 import { render as renderEducation } from '../src/sections/education.js';
-import { skills, certifications } from '../src/content/data.js';
+import { skills, certifications, education } from '../src/content/data.js';
 import { t } from '../src/content/i18n.js';
 import { escapeHtml } from '../src/sections/helpers.js';
 
@@ -37,11 +37,23 @@ test('all six certifications are listed', () => {
   }
 });
 
-test('a certification without a link shows a pending chip, not a dead anchor', () => {
+// All six documents are linked now: every card gets a real anchor, and no
+// card gets a dead one.
+test('every certification links to its document', () => {
   const html = renderEducation('en');
-  assert.doesNotMatch(html, /href="PLACEHOLDER_PAPU"/);
+  for (const cert of certifications) {
+    assert.match(html, new RegExp(escapeRe(`href="${cert.url}"`)), `${cert.id} has no link`);
+  }
   assert.doesNotMatch(html, /href=""/);
   assert.doesNotMatch(html, /PLACEHOLDER_PAPU/);
+  assert.doesNotMatch(html, /class="placeholder"/);
+});
+
+test('every certification names its issuer', () => {
+  const html = renderEducation('en');
+  for (const cert of certifications) {
+    assert.match(html, new RegExp(escapeRe(escapeHtml(cert.issuer))), `${cert.id} has no issuer`);
+  }
 });
 
 // Ariel will upload the scans; until then every certification shows the
@@ -57,6 +69,7 @@ test('certification previews honour the asset prefix', () => {
   assert.match(renderEducation('en', '../'), /src="\.\.\/images\//);
 });
 
-test('the unknown semester renders as a chip', () => {
-  assert.match(renderEducation('en'), /class="placeholder"/);
+test('the current semester is stated', () => {
+  const html = renderEducation('en');
+  assert.match(html, new RegExp(escapeRe(escapeHtml(education[0].semester))));
 });

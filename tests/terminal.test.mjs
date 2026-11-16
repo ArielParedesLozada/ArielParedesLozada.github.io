@@ -31,7 +31,7 @@ test('each section name navigates to its own page', () => {
 test('a subsection navigates to its anchor', () => {
   assert.equal(resolve('education certs', inside).navigate, '/education/#certs');
   assert.equal(resolve('education uni', inside).navigate, '/education/#uni');
-  assert.equal(resolve('about hobbies', inside).navigate, '/about/#hobbies');
+  assert.equal(resolve('about cv', inside).navigate, '/about/#cv');
   assert.equal(resolve('experience events', inside).navigate, '/experience/#events');
 });
 

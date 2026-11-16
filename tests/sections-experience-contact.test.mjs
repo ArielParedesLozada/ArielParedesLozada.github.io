@@ -32,12 +32,19 @@ test('every project appears with stack, role and links', () => {
   }
 });
 
-test('an unknown stack renders a pending chip, never the sentinel', () => {
+// Every role and stack is known now, in both languages.
+test('nothing on the experience page is still pending', () => {
+  for (const lang of ['en', 'es']) {
+    const html = renderExperience(lang);
+    assert.doesNotMatch(html, /PLACEHOLDER_PAPU/);
+    assert.doesNotMatch(html, /class="placeholder"/, `${lang} still has a pending chip`);
+  }
+  assert.equal(projects.filter((p) => p.stack.includes(PLACEHOLDER)).length, 0);
+});
+
+test('both internship roles are stated', () => {
   const html = renderExperience('en');
-  assert.doesNotMatch(html, /PLACEHOLDER_PAPU/);
-  const unknown = projects.filter((p) => p.stack.includes(PLACEHOLDER));
-  assert.ok(unknown.length > 0, 'fixture no longer covers this case');
-  assert.match(html, /class="placeholder"/);
+  for (const c of companies) assert.match(html, rendered(t(c.roleKey)));
 });
 
 // Ariel asked for the repository screenshots to go: the cards are read for

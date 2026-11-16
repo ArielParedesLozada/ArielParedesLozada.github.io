@@ -2,11 +2,10 @@
 // Imported by the build script (Node) and by the browser, so a string
 // exists in exactly one place.
 //
-// PLACEHOLDER_PAPU appears in BOTH languages wherever Ariel has not
-// supplied the wording. It is rendered as a visible "pending" chip, never
-// printed raw and never replaced with a plausible-sounding guess.
-
-import { PLACEHOLDER } from './data.js';
+// Nothing here is unknown today. If something becomes unknown, the value is
+// PLACEHOLDER (imported from data.js) in BOTH languages: it renders as a
+// visible "pending" chip, never printed raw and never replaced with a
+// plausible-sounding guess.
 
 export const LANGS = ['en', 'es'];
 
@@ -51,7 +50,7 @@ export const DICT = {
     'cmd.cv.summary': 'go to the CV',
     'cmd.start.summary': 'enter the site',
     'cmd.about.summary': 'who Ariel is, and his CV',
-    'cmd.about.usage': 'usage: about [hobbies]',
+    'cmd.about.usage': 'usage: about [cv]',
     'cmd.skills.summary': 'technologies he works with',
     'cmd.skills.usage': 'usage: skills',
     'cmd.education.summary': 'studies and certifications',
@@ -65,10 +64,11 @@ export const DICT = {
     'cmd.neofetch.focus': 'data analysis / DevOps / systems',
 
     'section.about.heading': 'about',
-    'section.about.summary': PLACEHOLDER,
-    'section.about.objective': PLACEHOLDER,
+    'section.about.summary':
+      'Software engineering student at Universidad Técnica de Ambato, building hands-on experience with deployed systems, academic platforms, and hackathon projects.',
+    'section.about.objective':
+      'Looking for opportunities in data analysis, DevOps, or operating systems.',
     'section.cv.heading': 'curriculum vitae',
-    'section.hobbies.heading': 'hobbies',
     'section.uni.heading': 'higher education',
     'section.certs.heading': 'certifications',
     'section.companies.heading': 'companies',
@@ -87,13 +87,14 @@ export const DICT = {
     'cert.django-web': 'Desarrollo Web con Python y Django',
     'cert.esp32': 'IoT Design & Monitoring for Energy Systems with ESP32',
 
-    'company.galacorp.role': PLACEHOLDER,
+    'company.galacorp.role': 'Technology assistant',
     'company.galacorp.summary': 'Built the Procoineec website.',
-    'company.assa.role': PLACEHOLDER,
+    'company.assa.role': 'Technology assistant',
     'company.assa.summary': 'Projects built on PowerApps. No public repository.',
 
-    'project.procoineec.description': 'Company website, built during the Galacorp internship.',
-    'project.procoineec.role': PLACEHOLDER,
+    'project.procoineec.description':
+      "Corporate website for Procoineec, built during the Galacorp internship. It features a modern, responsive landing page that showcases the company's services, reinforces its brand identity, and makes it easy for potential clients to get in touch.",
+    'project.procoineec.role': 'Frontend developer for the Procoineec site.',
     'project.odoo-das.description':
       'E-learning platform built on Odoo 18 Community for the Academia Virtual de Tecnología, covering course e-commerce, Ecuadorian electronic invoicing with XAdES-BES signing and SRI integration, an LMS, and segmented email marketing.',
     'project.odoo-das.role': 'Developed the certificates module.',
@@ -119,10 +120,6 @@ export const DICT = {
     'skills.databases': 'databases',
     'skills.devops': 'devops',
 
-    'hobby.swimming': 'Swimming',
-    'hobby.reading': 'Reading',
-    'hobby.mathematics': 'Mathematics',
-    'hobby.exercise': 'Exercise',
 
     'ui.pending': 'pending',
     'ui.stack': 'Stack',
@@ -197,7 +194,7 @@ export const DICT = {
     'cmd.cv.summary': 'ir a la hoja de vida',
     'cmd.start.summary': 'entrar al sitio',
     'cmd.about.summary': 'quién es Ariel, y su hoja de vida',
-    'cmd.about.usage': 'usage: about [hobbies]',
+    'cmd.about.usage': 'usage: about [cv]',
     'cmd.skills.summary': 'tecnologías con las que trabaja',
     'cmd.skills.usage': 'usage: skills',
     'cmd.education.summary': 'estudios y certificaciones',
@@ -211,10 +208,11 @@ export const DICT = {
     'cmd.neofetch.focus': 'análisis de datos / DevOps / sistemas',
 
     'section.about.heading': 'acerca',
-    'section.about.summary': PLACEHOLDER,
-    'section.about.objective': PLACEHOLDER,
+    'section.about.summary':
+      'Estudiante de ingeniería de software en la Universidad Técnica de Ambato, con experiencia práctica en sistemas desplegados, plataformas académicas y proyectos de hackatón.',
+    'section.about.objective':
+      'Busca oportunidades en análisis de datos, DevOps o sistemas operativos.',
     'section.cv.heading': 'hoja de vida',
-    'section.hobbies.heading': 'hobbies',
     'section.uni.heading': 'educación superior',
     'section.certs.heading': 'certificaciones',
     'section.companies.heading': 'empresas',
@@ -233,13 +231,14 @@ export const DICT = {
     'cert.django-web': 'Desarrollo Web con Python y Django',
     'cert.esp32': 'IoT Design & Monitoring for Energy Systems with ESP32',
 
-    'company.galacorp.role': PLACEHOLDER,
+    'company.galacorp.role': 'Asistente de tecnología',
     'company.galacorp.summary': 'Se desarrolló la página de Procoineec.',
-    'company.assa.role': PLACEHOLDER,
+    'company.assa.role': 'Asistente de tecnología',
     'company.assa.summary': 'Proyectos hechos en PowerApps. Sin repositorio público.',
 
-    'project.procoineec.description': 'Sitio web corporativo, desarrollado durante las prácticas en Galacorp.',
-    'project.procoineec.role': PLACEHOLDER,
+    'project.procoineec.description':
+      'Sitio web corporativo de Procoineec, desarrollado durante las prácticas en Galacorp. Es una landing page moderna y responsiva que presenta los servicios de la empresa, refuerza su identidad de marca y facilita que un cliente potencial se ponga en contacto.',
+    'project.procoineec.role': 'Desarrollador frontend del sitio de Procoineec.',
     'project.odoo-das.description':
       'Plataforma de e-learning construida sobre Odoo 18 Community para la Academia Virtual de Tecnología: comercio electrónico de cursos, facturación electrónica ecuatoriana con firma XAdES-BES e integración con el SRI, un LMS y marketing por correo segmentado.',
     'project.odoo-das.role': 'Se desarrolló el módulo de certificados.',
@@ -265,10 +264,6 @@ export const DICT = {
     'skills.databases': 'bases de datos',
     'skills.devops': 'devops',
 
-    'hobby.swimming': 'Natación',
-    'hobby.reading': 'Lectura',
-    'hobby.mathematics': 'Matemáticas',
-    'hobby.exercise': 'Ejercicio',
 
     'ui.pending': 'pendiente',
     'ui.stack': 'Tecnologías',

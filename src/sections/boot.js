@@ -2,19 +2,23 @@ import { profile, skills } from '../content/data.js';
 import { t } from '../content/i18n.js';
 import { escapeHtml, label, proseOr } from './helpers.js';
 
-// A NixOS-flavoured snowflake, drawn so it stays legible in a monospace cell.
+// The logo Ariel drew for the boot screen. Restored verbatim from commit
+// 50b1c00; escapeHtml() handles the < and the backslashes on the way out.
 const ART = [
-  '          ▗▄▄▄       ',
-  '      ▜█▙ ▜███▙   ▟█▛',
-  '       ▜███▙ ▜███▙▟█▛',
-  '        ▜███▙ ▜██████▙',
-  ' ▟█████████████████████▛',
-  '▟███████████████████████▛',
-  '       ▟██████████████▛ ',
-  '      ▟███▛ ▟███▛▜███▙  ',
-  '     ▟███▛▟███▛  ▜███▙  ',
-  '    ▟███▛ ▜▛      ▜███▙ ',
-  '   ▝▀▀▀            ▀▀▀▘ ',
+  '     _   ___    _      ',
+  '    +o\\  \\  \\  / \\     ',
+  '    \\oo\\  \\  \\/  /     ',
+  '  ,oo+oo+oo\\   ,/ +\\   ',
+  ' <oooooooooo\\  \\ /os;  ',
+  '     /``/    \\  ,oo/   ',
+  ',─~─\'  /      \\,oooooo,',
+  '\\__   ;s      /oo/sss>`',
+  '  /  /so\\____/ss/____  ',
+  ' `, / \\oo\\   ```     / ',
+  '  \\/ /sooo\\─~.  .─~─`  ',
+  '    /so/\\oo\\  \\  \\     ',
+  '    \\o/  \\s+\\  \\_/     ',
+  '          ```          ',
 ];
 
 function row(labelKey, value, lang) {

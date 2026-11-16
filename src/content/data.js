@@ -28,7 +28,7 @@ export const education = [
     institution: 'Universidad Técnica de Ambato',
     degreeKey: 'education.uta.degree',
     period: '2022 — present',
-    semester: PLACEHOLDER,
+    semester: '8',
     achievementKeys: ['education.uta.achievement'],
   },
 ];
@@ -41,38 +41,44 @@ export const certifications = [
     id: 'network-support',
     titleKey: 'cert.network-support',
     issuer: 'Cisco Networking Academy',
-    url: PLACEHOLDER,
+    url: 'https://drive.google.com/file/d/1JfrHNirzeoLlVGUAr2k6GCqBo9tD7Hjn/view?usp=sharing',
     preview: null,
   },
   {
     id: 'iot',
     titleKey: 'cert.iot',
     issuer: 'Cisco Networking Academy',
-    url: 'https://drive.google.com/file/d/1A3UR8xqxwFKHUbnLmWi-nqWhFtsWoNCH/view?usp=drive_link',
+    url: 'https://drive.google.com/file/d/1mHb6GhXfCslmSznXSZT_vo_LbXS4XyMX/view?usp=sharing',
     preview: null,
   },
   {
     id: 'csei-2024',
     titleKey: 'cert.csei-2024',
     issuer: 'Universidad Técnica de Ambato',
-    url: PLACEHOLDER,
+    url: 'https://drive.google.com/file/d/1om1Ct3Sw34PqB0sQecj59kmFPfEQjRQd/view?usp=drive_link',
     preview: null,
   },
   {
     id: 'python-basics',
     titleKey: 'cert.python-basics',
     issuer: 'Cisco-FISEI',
-    url: 'https://drive.google.com/file/d/1g9zp9OHS-JB7UTB1fk4sPmgb817q-Ygd/view?usp=drive_link',
+    url: 'https://drive.google.com/file/d/1Mar8LBZYlgAvHZ2wDe__rmMQxNMFMJ5T/view?usp=sharing',
     preview: null,
   },
   {
     id: 'django-web',
     titleKey: 'cert.django-web',
     issuer: 'Universidad Técnica de Ambato',
-    url: 'https://drive.google.com/file/d/1boMu6_79RG7XmIyXS4iV47I9eefMN2r6/view?usp=drive_link',
+    url: 'https://drive.google.com/file/d/1UP1PiMQif8atrE6UWepIZAZlAgZ3yiOF/view?usp=sharing',
     preview: null,
   },
-  { id: 'esp32', titleKey: 'cert.esp32', issuer: PLACEHOLDER, url: PLACEHOLDER, preview: null },
+  {
+    id: 'esp32',
+    titleKey: 'cert.esp32',
+    issuer: 'Universidad Técnica de Ambato',
+    url: 'https://drive.google.com/file/d/1c_TS_clx8Iz4KsXlfUifzMge0rp11ppN/view?usp=sharing',
+    preview: null,
+  },
 ];
 
 export const companies = [
@@ -100,7 +106,7 @@ export const projects = [
     name: 'Procoineec',
     descriptionKey: 'project.procoineec.description',
     roleKey: 'project.procoineec.role',
-    stack: [PLACEHOLDER],
+    stack: ['React', 'Vite'],
     links: [{ labelKey: 'ui.liveSite', url: 'https://procoineec.com/' }],
   },
   {
@@ -219,5 +225,3 @@ export const events = [
     logo: null,
   },
 ];
-
-export const hobbies = ['swimming', 'reading', 'mathematics', 'exercise'];

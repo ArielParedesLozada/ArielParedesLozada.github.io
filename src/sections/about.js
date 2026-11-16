@@ -1,4 +1,4 @@
-import { profile, companies, education, hobbies } from '../content/data.js';
+import { profile, companies, education } from '../content/data.js';
 import { t } from '../content/i18n.js';
 import { escapeHtml, label, proseOr, labelledProse } from './helpers.js';
 
@@ -12,10 +12,6 @@ export function render(lang = 'en', assetPrefix = '') {
       (e) =>
         `<li>${escapeHtml(e.institution)} — ${label(e.degreeKey, lang)} (${escapeHtml(e.period)})</li>`,
     )
-    .join('\n          ');
-
-  const hobbyItems = hobbies
-    .map((id) => `<li class="chip">${label(`hobby.${id}`, lang)}</li>`)
     .join('\n          ');
 
   // A disabled button beats a link to a PDF that is not there yet.
@@ -57,12 +53,5 @@ export function render(lang = 'en', assetPrefix = '') {
         <div class="cv-block">
           ${cvButton}
         </div>
-      </section>
-
-      <section class="section" id="hobbies" aria-labelledby="hobbies-heading">
-        <h2 id="hobbies-heading" class="section-heading" data-i18n="section.hobbies.heading">${escapeHtml(t('section.hobbies.heading', lang))}</h2>
-        <ul class="chips">
-          ${hobbyItems}
-        </ul>
       </section>`;
 }
