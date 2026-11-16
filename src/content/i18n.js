@@ -41,6 +41,7 @@ export const DICT = {
     'boot.location': 'location',
 
     'cmd.notFound': 'command not found:',
+    'cmd.notFound.hint': "type 'help' for the list",
     'cmd.help.header': 'Available commands:',
     'cmd.help.summary': 'list available commands',
     'cmd.clear.summary': 'clear the output',
@@ -181,6 +182,7 @@ export const DICT = {
     'boot.location': 'ubicación',
 
     'cmd.notFound': 'comando no encontrado:',
+    'cmd.notFound.hint': "escribe 'help' para ver la lista",
     'cmd.help.header': 'Comandos disponibles:',
     'cmd.help.summary': 'listar los comandos disponibles',
     'cmd.clear.summary': 'limpiar la salida',
