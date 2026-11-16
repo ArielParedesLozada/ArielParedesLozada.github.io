@@ -15,8 +15,11 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/ariel-paredes-lozada-377685409',
   github: 'https://github.com/ArielParedesLozada',
   photo: 'images/my_img.jpg',
-  cvPath: 'assets/cv/cv-ariel-paredes-lozada.pdf',
-  cvAvailable: false,
+  cvPath: 'assets/cv/CV.pdf',
+  // What the visitor's download lands as: "CV.pdf" in a Downloads folder
+  // tells them nothing a week later.
+  cvFileName: 'cv-ariel-paredes-lozada.pdf',
+  cvAvailable: true,
 };
 
 export const education = [

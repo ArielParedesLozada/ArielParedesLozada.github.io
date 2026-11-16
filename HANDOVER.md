@@ -84,15 +84,17 @@ grep -n '\bPLACEHOLDER\b' src/content/data.js src/content/i18n.js
 | 8 | Three certification links | `data.js`, `certifications[]` — Network Support and Security, VI Congreso CSEI 2024, ESP32 | `/education/#certs` |
 | 9 | ESP32 certificate issuer | `data.js`, `certifications[5].issuer` | `/education/#certs` |
 | 10 | Certificate previews | `data.js`, `certifications[].preview` — drop scans under `images/certs/` and point at them | `/education/#certs` |
-| 11 | CV PDF | see below | `/about/#cv` |
 
-## Two manual steps
+The CV is published: `assets/cv/CV.pdf`, wired through
+`profile.cvPath`/`cvAvailable`. The download link carries
+`download="cv-ariel-paredes-lozada.pdf"` (`profile.cvFileName`) so the
+visitor's copy is named after Ariel and not after the file on disk — if you
+replace the PDF, keep the path or update both fields. The disabled-button
+branch in `about.js` is still there for whoever unpublishes it.
 
-1. **CV PDF.** Save it as `assets/cv/cv-ariel-paredes-lozada.pdf`, set
-   `profile.cvAvailable` to `true` in `src/content/data.js`, rebuild. Until
-   then the Download button stays disabled with an honest note rather than
-   linking to a 404.
-2. **Certification documents.** Three of the six have Google Drive links;
+## One manual step
+
+1. **Certification documents.** Three of the six have Google Drive links;
    three have none. Prefer committing the PDFs under `assets/certs/` and
    pointing `certifications[].url` at them: the link checker can verify a
    local file, while a Drive URL can only ever be a warning because Drive

@@ -2,7 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { render as renderBoot } from '../src/sections/boot.js';
 import { render as renderAbout } from '../src/sections/about.js';
-import { skills, hobbies } from '../src/content/data.js';
+import { access } from 'node:fs/promises';
+import { profile, skills, hobbies } from '../src/content/data.js';
 import { t } from '../src/content/i18n.js';
 
 test('the boot screen shows name, objective and technologies, and hints at start', () => {
@@ -31,10 +32,16 @@ test('about carries the cv anchor and the hobbies anchor', () => {
   assert.match(html, /id="hobbies"/);
 });
 
-test('with no CV published the download is disabled and says so', () => {
-  const html = renderAbout('en');
-  assert.match(html, /aria-disabled="true"/);
-  assert.doesNotMatch(html, /href="[^"]*cv-ariel-paredes-lozada\.pdf"/);
+// The CV is published now, so the disabled-button path is no longer the one
+// a visitor sees. What matters is that the href points at a file that is
+// actually committed, and that the saved file carries Ariel's name.
+test('the CV download points at a file that exists and names itself', async () => {
+  const html = renderAbout('en', '../');
+  assert.ok(profile.cvAvailable, 'fixture says the CV is unpublished');
+  assert.doesNotMatch(html, /aria-disabled="true"/);
+  assert.match(html, new RegExp(`href="\\.\\./${profile.cvPath}"`));
+  assert.match(html, /download="[^"]*ariel-paredes-lozada[^"]*\.pdf"/);
+  await access(new URL(`../${profile.cvPath}`, import.meta.url));
 });
 
 test('every hobby is listed', () => {

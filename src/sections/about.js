@@ -20,7 +20,7 @@ export function render(lang = 'en', assetPrefix = '') {
 
   // A disabled button beats a link to a PDF that is not there yet.
   const cvButton = profile.cvAvailable
-    ? `<a class="btn btn-primary" id="cv-download" href="${assetPrefix}${escapeHtml(profile.cvPath)}" download>${label('ui.downloadCv', lang)}</a>`
+    ? `<a class="btn btn-primary" id="cv-download" href="${assetPrefix}${escapeHtml(profile.cvPath)}" download="${escapeHtml(profile.cvFileName)}">${label('ui.downloadCv', lang)}</a>`
     : `<a class="btn btn-primary" id="cv-download" aria-disabled="true" download>${label('ui.downloadCv', lang)}</a>
           <p class="cv-note" data-i18n="ui.cvUnavailable">${escapeHtml(t('ui.cvUnavailable', lang))}</p>`;
 
