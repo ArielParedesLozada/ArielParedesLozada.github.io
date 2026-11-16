@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="author" content="Ariel Paredes Lozada">
+  <meta name="theme-color" content="#0d1117">
+
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{assetPrefix}}images/android-chrome-512x512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="{{assetPrefix}}images/android-chrome-512x512.png">
+
+  <link rel="icon" href="{{assetPrefix}}images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" href="{{assetPrefix}}images/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="{{assetPrefix}}images/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="{{assetPrefix}}css/tokens.css">
+  <link rel="stylesheet" href="{{assetPrefix}}css/base.css">
+  <link rel="stylesheet" href="{{assetPrefix}}css/layout.css">
+  <link rel="stylesheet" href="{{assetPrefix}}css/components.css">
+  <link rel="stylesheet" href="{{assetPrefix}}css/terminal.css">
+</head>
+<body class="{{bodyClass}}" data-page="{{pageId}}" data-asset-prefix="{{assetPrefix}}">
+  <a class="skip-link visually-hidden" href="#main" data-i18n="ui.skipLink">{{skipLink}}</a>
+
+  <div class="screen">
+    <div class="window-chrome">
+      <span class="window-controls" aria-hidden="true">─ □ ×</span>
+      <span class="window-title">{{windowTitle}}</span>
+    </div>
+
+{{menu}}
+
+    <main id="main" class="screen-body">
+{{body}}
+    </main>
+
+    <div class="terminal" id="terminal-root">
+      <output class="terminal-output" id="terminal-output" aria-live="polite"></output>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt" aria-hidden="true">$</span>
+        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off"
+               spellcheck="false" autocapitalize="off" aria-label="Terminal command input">
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="noscript-notice" data-i18n="ui.noscript">{{noscript}}</p>
+{{noscriptNav}}
+  </noscript>
+
+  <footer class="site-footer">
+    <p>
+      <span data-i18n="ui.credit">{{credit}}</span>
+      <a href="https://github.com/s4sahiko/tportfolio" rel="noopener">s4sahiko/tportfolio</a>.
+      <span data-i18n="ui.creditTail">{{creditTail}}</span>
+    </p>
+  </footer>
+
+  <script type="module" src="{{assetPrefix}}js/main.js"></script>
+</body>
+</html>

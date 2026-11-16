@@ -1,0 +1,356 @@
+/* ---- window chrome ---- */
+.window-chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--fg-muted);
+}
+
+.window-controls {
+  letter-spacing: 0.2em;
+}
+
+.window-title {
+  color: var(--accent-dim);
+}
+
+/* ---- cards ---- */
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: var(--shadow);
+}
+
+.card + .card {
+  margin-top: var(--space-4);
+}
+
+.card h3 {
+  color: var(--fg);
+  font-size: var(--step-0);
+  margin-bottom: var(--space-1);
+}
+
+.card-meta {
+  color: var(--fg-muted);
+  font-size: var(--step--1);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+  list-style: none;
+}
+
+.card-grid .card + .card {
+  margin-top: 0;
+}
+
+/* ---- chips ---- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--step--1);
+}
+
+.skill-chip img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.skill-group h2 {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  margin-bottom: var(--space-3);
+}
+
+.skill-group + .skill-group {
+  margin-top: var(--space-5);
+}
+
+/* ---- buttons ---- */
+.btn {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--fg);
+}
+
+.btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- pending marker ---- */
+.placeholder {
+  display: inline-block;
+  background: color-mix(in srgb, var(--warn) 20%, transparent);
+  color: var(--warn);
+  border: 1px dashed var(--warn);
+  border-radius: var(--radius);
+  padding: 0 var(--space-2);
+  font-size: var(--step--1);
+  font-style: italic;
+}
+
+.field-key {
+  color: var(--accent);
+}
+
+.field-key::after {
+  content: ':';
+  margin-right: 0.35ch;
+}
+
+/* ---- projects ---- */
+/* No screenshots here by design: the cards are read, not looked at. */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--space-4);
+}
+
+.project-card p {
+  margin-bottom: var(--space-2);
+}
+
+/* ---- certificate previews ---- */
+.cert-preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-2);
+  background: var(--bg);
+}
+
+.cert-card h3 {
+  margin-top: var(--space-1);
+}
+
+/* ---- events ---- */
+.event-card {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.event-logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: var(--space-1);
+}
+
+.event-body {
+  min-width: 0;
+}
+
+/* A stand-in image says so by being dimmer than a real one. */
+.cert-preview[data-missing],
+.event-logo[data-missing] {
+  opacity: 0.55;
+}
+
+/* ---- link lists ---- */
+.link-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.contact-list a {
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}
+
+/* ---- fastfetch block (boot screen) ---- */
+.fetch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+.fetch-art {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.fetch-info {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 16rem;
+  flex: 1;
+}
+
+.fetch-title {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.fetch-at {
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+.fetch-rule {
+  color: var(--border);
+  font-family: var(--font-mono);
+}
+
+.fetch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+
+.fetch-key {
+  color: var(--accent);
+  min-width: 7rem;
+}
+
+.fetch-key::after {
+  content: ':';
+}
+
+.boot-hint {
+  margin-top: var(--space-5);
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+}
+
+/* ---- about ---- */
+.about-identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+.portrait {
+  width: 10rem;
+  height: 10rem;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.about-name {
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.about-summary,
+.about-objective {
+  margin-top: var(--space-2);
+}
+
+.about-mini {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.about-mini h2 {
+  color: var(--accent);
+  font-size: var(--step-0);
+  margin-bottom: var(--space-2);
+}
+
+.about-mini ul {
+  list-style: none;
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--step--1);
+  color: var(--fg-muted);
+}
+
+.cv-block {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+
+.cv-note {
+  font-size: var(--step--1);
+  color: var(--fg-muted);
+}
+
+.noscript-notice {
+  max-width: 68rem;
+  margin: var(--space-4) auto;
+  padding: var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--warn);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 40rem) {
+  .fetch-art {
+    font-size: 0.6rem;
+  }
+
+  .portrait {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+.noscript-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  list-style: none;
+  font-family: var(--font-mono);
+  margin-top: var(--space-3);
+}

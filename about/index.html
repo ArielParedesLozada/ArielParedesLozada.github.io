@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Ariel Paredes Lozada</title>
+  <meta name="description" content="Who Ariel Paredes Lozada is, his professional objective, and his CV.">
+  <meta name="author" content="Ariel Paredes Lozada">
+  <meta name="theme-color" content="#0d1117">
+
+  <meta property="og:title" content="About — Ariel Paredes Lozada">
+  <meta property="og:description" content="Who Ariel Paredes Lozada is, his professional objective, and his CV.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../images/android-chrome-512x512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="../images/android-chrome-512x512.png">
+
+  <link rel="icon" href="../images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" href="../images/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/terminal.css">
+</head>
+<body class="has-menu" data-page="about" data-asset-prefix="../">
+  <a class="skip-link visually-hidden" href="#main" data-i18n="ui.skipLink">Skip to main content</a>
+
+  <div class="screen">
+    <div class="window-chrome">
+      <span class="window-controls" aria-hidden="true">─ □ ×</span>
+      <span class="window-title">## ariel@portfolio ~/about</span>
+    </div>
+
+    <nav class="site-menu" aria-label="Primary">
+      <ul>
+        <li><a href="../about/" data-i18n="nav.about" aria-current="page">about</a></li>
+        <li><a href="../skills/" data-i18n="nav.skills">skills</a></li>
+        <li><a href="../education/" data-i18n="nav.education">education</a></li>
+        <li><a href="../experience/" data-i18n="nav.experience">experience</a></li>
+        <li><a href="../contact/" data-i18n="nav.contact">contact</a></li>
+      </ul>
+    </nav>
+
+    <main id="main" class="screen-body">
+      <section class="section" aria-labelledby="about-heading">
+        <h1 id="about-heading" class="section-heading" data-i18n="section.about.heading">about</h1>
+        <div class="about-identity">
+          <img class="portrait" src="../images/my_img.jpg"
+               alt="Portrait of Ariel Paredes Lozada" width="160" height="160">
+          <div>
+            <p class="about-name">Ariel Paredes Lozada</p>
+            <p class="about-summary"><span data-i18n="section.about.summary">Software engineering student at Universidad Técnica de Ambato, building hands-on experience with deployed systems, academic platforms, and hackathon projects.</span></p>
+            <p class="about-objective"><span class="field-key"><span data-i18n="ui.objective">Objective</span></span><span data-i18n="section.about.objective">Looking for opportunities in data analysis, DevOps, or operating systems.</span></p>
+          </div>
+        </div>
+
+        <div class="about-mini">
+          <div>
+            <h2 data-i18n="section.companies.heading">companies</h2>
+            <ul>
+          <li>Galacorp — June 2025 — August 2025</li>
+          <li>ASSA — June 2026 — August 2026</li>
+            </ul>
+          </div>
+          <div>
+            <h2 data-i18n="section.uni.heading">higher education</h2>
+            <ul>
+          <li>Universidad Técnica de Ambato — <span data-i18n="education.uta.degree">Ingeniería de Software (Software Engineering)</span> (2022 — present)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cv" aria-labelledby="cv-heading">
+        <h2 id="cv-heading" class="section-heading" data-i18n="section.cv.heading">curriculum vitae</h2>
+        <div class="cv-block">
+          <a class="btn btn-primary" id="cv-download" href="../assets/cv/CV.pdf" download="cv-ariel-paredes-lozada.pdf"><span data-i18n="ui.downloadCv">Download CV</span></a>
+        </div>
+      </section>
+    </main>
+
+    <div class="terminal" id="terminal-root">
+      <output class="terminal-output" id="terminal-output" aria-live="polite"></output>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt" aria-hidden="true">$</span>
+        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off"
+               spellcheck="false" autocapitalize="off" aria-label="Terminal command input">
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="noscript-notice" data-i18n="ui.noscript">This page works without JavaScript, in English. The command line and the language switch need it.</p>
+
+  </noscript>
+
+  <footer class="site-footer">
+    <p>
+      <span data-i18n="ui.credit">Terminal portfolio idea credited to</span>
+      <a href="https://github.com/s4sahiko/tportfolio" rel="noopener">s4sahiko/tportfolio</a>.
+      <span data-i18n="ui.creditTail">Code written from scratch.</span>
+    </p>
+  </footer>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

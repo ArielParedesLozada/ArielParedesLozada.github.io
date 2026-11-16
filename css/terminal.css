@@ -1,0 +1,73 @@
+/* The command line. Fixed to the bottom of the viewport: it is how the site
+   is navigated, so it is never scrolled away. */
+
+.terminal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-family: var(--font-mono);
+  font-size: var(--terminal-size);
+  line-height: var(--terminal-row);
+}
+
+.terminal-output {
+  display: block;
+  max-height: 11rem;
+  overflow-y: auto;
+  padding: var(--space-3) var(--space-4) var(--space-1);
+  color: var(--fg-muted);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.terminal-output > div {
+  padding: 0.1rem 0;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: var(--terminal-size);
+  line-height: var(--terminal-row);
+  caret-color: var(--accent);
+}
+
+.terminal-input:focus {
+  outline: none;
+}
+
+.terminal-input-line:focus-within {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.terminal-line {
+  font-family: var(--font-mono);
+  color: var(--fg-muted);
+}
+
+@media (max-width: 40rem) {
+  .terminal-output {
+    max-height: 7rem;
+  }
+}
