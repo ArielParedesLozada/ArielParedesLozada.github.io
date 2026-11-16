@@ -73,13 +73,10 @@ test('every event appears with its date, description and a logo', () => {
   assert.equal(logos.length, events.length, 'not every event has a logo slot');
 });
 
-test('a pending event logo falls back to the placeholder image', () => {
-  const html = renderExperience('en');
-  assert.ok(
-    events.some((e) => !e.logo),
-    'fixture no longer covers a pending logo',
-  );
-  assert.match(html, /images\/placeholder\.svg/);
+test('all event logos are real images, not placeholders', () => {
+  for (const e of events) {
+    assert.ok(e.logo, `${e.id} still has no logo`);
+  }
 });
 
 test('contact lists both emails and LinkedIn as working links', () => {
