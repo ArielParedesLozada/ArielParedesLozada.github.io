@@ -48,6 +48,9 @@ test('severityFor downgrades bot-blocking statuses to warn', () => {
   assert.equal(severityFor(403), 'warn');
   assert.equal(severityFor(405), 'warn');
   assert.equal(severityFor(429), 'warn');
+  // LinkedIn answers automated requests with a non-standard 999. The link is
+  // good; only the robot is unwelcome.
+  assert.equal(severityFor(999), 'warn');
   assert.equal(severityFor(404), 'error');
   assert.equal(severityFor(500), 'error');
 });

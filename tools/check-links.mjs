@@ -55,7 +55,8 @@ export async function collectHtmlFiles(rootDir, prefix = '') {
 
 export function severityFor(status) {
   if (status >= 200 && status < 400) return 'ok';
-  if (status === 403 || status === 405 || status === 429) return 'warn';
+  // 999 is LinkedIn's non-standard refusal of automated requests.
+  if (status === 403 || status === 405 || status === 429 || status === 999) return 'warn';
   return 'error';
 }
 

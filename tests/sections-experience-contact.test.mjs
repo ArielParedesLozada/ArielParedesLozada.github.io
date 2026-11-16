@@ -1,0 +1,71 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { render as renderExperience } from '../src/sections/experience.js';
+import { render as renderContact } from '../src/sections/contact.js';
+import { companies, projects, PLACEHOLDER } from '../src/content/data.js';
+import { t } from '../src/content/i18n.js';
+import { escapeHtml } from '../src/sections/helpers.js';
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const rendered = (s) => new RegExp(escapeRe(escapeHtml(s)));
+
+test('both companies appear with their periods', () => {
+  const html = renderExperience('en');
+  for (const c of companies) {
+    assert.match(html, rendered(c.org));
+    assert.match(html, rendered(c.period));
+  }
+});
+
+test('all four projects appear with stack, role and links', () => {
+  const html = renderExperience('en');
+  for (const p of projects) {
+    assert.match(html, rendered(t(p.descriptionKey)));
+    for (const tech of p.stack) {
+      if (tech === PLACEHOLDER) continue;
+      assert.match(html, rendered(tech));
+    }
+    for (const link of p.links) {
+      if (link.url === PLACEHOLDER) continue;
+      assert.match(html, rendered(link.url));
+    }
+  }
+});
+
+test('an unknown stack renders a pending chip, never the sentinel', () => {
+  const html = renderExperience('en');
+  assert.doesNotMatch(html, /PLACEHOLDER_PAPU/);
+  const unknown = projects.filter((p) => p.stack.includes(PLACEHOLDER));
+  assert.ok(unknown.length > 0, 'fixture no longer covers this case');
+  assert.match(html, /class="placeholder"/);
+});
+
+test('project images are lazy and fall back when the screenshot is missing', () => {
+  const html = renderExperience('en');
+  assert.match(html, /loading="lazy"/);
+  assert.match(html, /images\/projects\/placeholder\.svg/);
+});
+
+test('events live at the experience anchor the command targets', () => {
+  assert.match(renderExperience('en'), /id="events"/);
+});
+
+test('contact lists both emails and LinkedIn as working links', () => {
+  const html = renderContact('en');
+  assert.match(html, /mailto:johanatreidesi66@gmail\.com/);
+  assert.match(html, /mailto:aparedes3001@uta\.edu\.ec/);
+  assert.match(html, /https:\/\/www\.linkedin\.com\/in\/ariel-paredes-lozada-377685409/);
+});
+
+test('no contact form survives the redesign', () => {
+  const html = renderContact('en');
+  assert.doesNotMatch(html, /<form/);
+  assert.doesNotMatch(html, /formspree/i);
+});
+
+test('external links carry rel="noopener"', () => {
+  const html = renderExperience('en') + renderContact('en');
+  for (const m of html.matchAll(/<a[^>]+href="https?:[^"]*"[^>]*>/g)) {
+    assert.match(m[0], /rel="[^"]*noopener/, `${m[0]} lacks noopener`);
+  }
+});
