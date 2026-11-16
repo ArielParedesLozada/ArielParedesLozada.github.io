@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ariel Paredes Lozada — Portfolio</title>
-  <meta name="description" content="Ariel Paredes Lozada's portfolio: software engineering student focused on data analysis, DevOps, and systems work.">
+  <meta name="description" content="Terminal portfolio of Ariel Paredes Lozada, software engineering student focused on data analysis, DevOps and systems.">
   <meta name="author" content="Ariel Paredes Lozada">
   <meta name="theme-color" content="#0d1117">
 
   <meta property="og:title" content="Ariel Paredes Lozada — Portfolio">
-  <meta property="og:description" content="Software engineering student focused on data analysis, DevOps, and systems work.">
+  <meta property="og:description" content="Terminal portfolio of Ariel Paredes Lozada, software engineering student focused on data analysis, DevOps and systems.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/android-chrome-512x512.png">
   <meta name="twitter:card" content="summary">
@@ -24,126 +24,44 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/terminal.css">
-
-  <script type="module" src="js/main.js"></script>
 </head>
-<body>
-  <a class="skip-link visually-hidden" href="#main">Skip to main content</a>
+<body class="is-boot" data-page="boot" data-asset-prefix="">
+  <a class="skip-link visually-hidden" href="#main" data-i18n="ui.skipLink">Skip to main content</a>
 
-  <div class="scroll-progress" id="scroll-progress" role="presentation"></div>
+  <div class="screen">
+    <div class="window-chrome">
+      <span class="window-controls" aria-hidden="true">─ □ ×</span>
+      <span class="window-title">## ariel@portfolio ~</span>
+    </div>
 
-  <header class="site-nav">
-    <nav aria-label="Primary">
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input visually-hidden">
-      <label for="nav-toggle" class="nav-toggle-label">Menu</label>
-      <ul class="nav-list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#objective">Objective</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+
+
+    <main id="main" class="screen-body">
+
+    </main>
+
+    <div class="terminal" id="terminal-root">
+      <output class="terminal-output" id="terminal-output" aria-live="polite"></output>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt" aria-hidden="true">$</span>
+        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off"
+               spellcheck="false" autocapitalize="off" aria-label="Terminal command input">
+      </div>
+    </div>
+  </div>
 
   <noscript>
-    <p class="noscript-notice">
-      This page needs JavaScript to render the detail sections below (education, experience,
-      projects, skills, events, and the contact form). You can still reach Ariel directly:
-      <a href="mailto:aparedes3001@uta.edu.ec">aparedes3001@uta.edu.ec</a> or on
-      <a href="https://github.com/ArielParedesLozada">GitHub</a>.
-    </p>
+    <p class="noscript-notice" data-i18n="ui.noscript">This page works without JavaScript, in English. The command line and the language switch need it.</p>
   </noscript>
 
-  <main id="main">
-    <section id="home" class="hero">
-      <div class="hero-text">
-        <img class="hero-photo" src="images/my_img.jpg" alt="Portrait of Ariel Paredes Lozada" width="160" height="160">
-        <h1>Ariel Paredes Lozada</h1>
-        <p class="hero-objective">Software engineering student aiming at data analysis, DevOps, and systems-oriented roles.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" id="cv-download" aria-disabled="true" download>Download CV</a>
-          <a class="btn btn-secondary" href="https://github.com/ArielParedesLozada">GitHub</a>
-          <a class="btn btn-secondary" href="mailto:aparedes3001@uta.edu.ec">Email</a>
-        </div>
-      </div>
-      <div class="hero-terminal" id="terminal-root">
-        <div class="window-chrome">
-          <span class="window-controls" aria-hidden="true">─ □ ×</span>
-          <span class="window-title">## ariel@portfolio ~</span>
-        </div>
-        <div class="terminal-body">
-          <output class="terminal-output" id="terminal-output" aria-live="polite"></output>
-          <div class="terminal-input-line">
-            <span class="terminal-prompt" aria-hidden="true">$</span>
-            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="objective" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## objective/</span>
-      </div>
-      <div data-mount="objective"></div>
-    </section>
-
-    <section id="education" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## education/</span>
-      </div>
-      <div data-mount="education"></div>
-    </section>
-
-    <section id="experience" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## experience/</span>
-      </div>
-      <div data-mount="experience"></div>
-    </section>
-
-    <section id="projects" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## projects/</span>
-      </div>
-      <div data-mount="projects"></div>
-    </section>
-
-    <section id="skills" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## skills/</span>
-      </div>
-      <div data-mount="skills"></div>
-    </section>
-
-    <section id="events" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## events/</span>
-      </div>
-      <div data-mount="events"></div>
-    </section>
-
-    <section id="contact" class="window-section">
-      <div class="window-chrome">
-        <span class="window-controls" aria-hidden="true">─ □ ×</span>
-        <span class="window-title">## contact/</span>
-      </div>
-      <div data-mount="contact"></div>
-    </section>
-  </main>
-
   <footer class="site-footer">
-    <p>Terminal portfolio idea credited to <a href="https://github.com/s4sahiko/tportfolio">s4sahiko/tportfolio</a>. Code written from scratch.</p>
+    <p>
+      <span data-i18n="ui.credit">Terminal portfolio idea credited to</span>
+      <a href="https://github.com/s4sahiko/tportfolio" rel="noopener">s4sahiko/tportfolio</a>.
+      <span data-i18n="ui.creditTail">Code written from scratch.</span>
+    </p>
   </footer>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

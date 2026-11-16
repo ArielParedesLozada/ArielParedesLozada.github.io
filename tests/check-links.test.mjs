@@ -1,6 +1,24 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { collectReferences, classify, checkLocal, severityFor } from '../tools/check-links.mjs';
+import { collectReferences, classify, checkLocal, severityFor, collectHtmlFiles } from '../tools/check-links.mjs';
+
+const repoRoot = new URL('..', import.meta.url).pathname;
+
+test('collectHtmlFiles finds pages one directory down', async () => {
+  const files = await collectHtmlFiles(repoRoot);
+  assert.ok(files.includes('index.html'));
+  assert.ok(files.includes('about/index.html'));
+  assert.ok(!files.some((f) => f.startsWith('docs/')));
+});
+
+test('a local link is resolved against the page that contains it', async () => {
+  // about/index.html links up and over to ../skills/ — resolving that against
+  // the repo root instead of the page's own directory escapes the repo.
+  const hit = await checkLocal('../skills/', repoRoot, 'about/index.html');
+  assert.equal(hit.ok, true);
+  const miss = await checkLocal('../nope/', repoRoot, 'about/index.html');
+  assert.equal(miss.ok, false);
+});
 
 test('collectReferences finds href and src in order', () => {
   const html = '<a href="#home">h</a><img src="images/a.png"><link href="css/t.css">';

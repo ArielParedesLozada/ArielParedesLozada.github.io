@@ -21,15 +21,36 @@ export function classify(value) {
   return 'local';
 }
 
-export async function checkLocal(value, rootDir) {
+// `sourceFile` is the repo-relative page the reference was found in. A link
+// like ../skills/ means something different depending on which directory it
+// sits in, so it resolves against the page's own directory, not the root.
+export async function checkLocal(value, rootDir, sourceFile = '') {
   const stripped = value.split('#')[0].split('?')[0];
-  const resolved = path.resolve(rootDir, stripped);
+  const base = path.resolve(rootDir, path.dirname(sourceFile));
+  const resolved = path.resolve(base, stripped);
   try {
     await access(resolved);
     return { ok: true, resolved };
   } catch {
     return { ok: false, resolved };
   }
+}
+
+const SKIP_DIRS = new Set(['.git', '.superpowers', 'docs', 'node_modules', 'src']);
+
+export async function collectHtmlFiles(rootDir, prefix = '') {
+  const found = [];
+  const entries = await readdir(path.join(rootDir, prefix), { withFileTypes: true });
+  for (const entry of entries) {
+    const rel = prefix === '' ? entry.name : `${prefix}/${entry.name}`;
+    if (entry.isDirectory()) {
+      if (SKIP_DIRS.has(entry.name)) continue;
+      found.push(...(await collectHtmlFiles(rootDir, rel)));
+    } else if (entry.name.endsWith('.html')) {
+      found.push(rel);
+    }
+  }
+  return found.sort();
 }
 
 export function severityFor(status) {
@@ -48,9 +69,12 @@ async function collectIds(html) {
 
 async function run() {
   const rootDir = process.cwd();
-  const entries = await readdir(rootDir);
-  const htmlFiles = entries.filter((f) => f.endsWith('.html'));
-  const sources = [...htmlFiles, path.join('js', 'content.js')];
+  const htmlFiles = await collectHtmlFiles(rootDir);
+  const sources = [
+    ...htmlFiles,
+    path.join('src', 'content', 'data.js'),
+    path.join('src', 'content', 'i18n.js'),
+  ];
 
   let hasError = false;
   let okCount = 0;
@@ -88,7 +112,7 @@ async function run() {
       }
 
       if (kind === 'local') {
-        const result = await checkLocal(ref.value, rootDir);
+        const result = await checkLocal(ref.value, rootDir, source);
         if (result.ok) {
           console.log(`OK   [${source}] ${ref.value}`);
           okCount++;
