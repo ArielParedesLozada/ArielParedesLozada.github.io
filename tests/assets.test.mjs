@@ -12,6 +12,10 @@ test('every skill icon path points at a file that exists', async () => {
   }
 });
 
+test('the shared preview placeholder exists', async () => {
+  await access(new URL('../images/placeholder.svg', import.meta.url));
+});
+
 test('every technology in every group has an icon', () => {
   for (const group of skills) {
     for (const item of group.items) {

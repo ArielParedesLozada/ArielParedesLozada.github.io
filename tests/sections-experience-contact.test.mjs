@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { render as renderExperience } from '../src/sections/experience.js';
 import { render as renderContact } from '../src/sections/contact.js';
-import { companies, projects, PLACEHOLDER } from '../src/content/data.js';
+import { companies, projects, events, PLACEHOLDER } from '../src/content/data.js';
 import { t } from '../src/content/i18n.js';
 import { escapeHtml } from '../src/sections/helpers.js';
 
@@ -17,7 +17,7 @@ test('both companies appear with their periods', () => {
   }
 });
 
-test('all four projects appear with stack, role and links', () => {
+test('every project appears with stack, role and links', () => {
   const html = renderExperience('en');
   for (const p of projects) {
     assert.match(html, rendered(t(p.descriptionKey)));
@@ -40,14 +40,39 @@ test('an unknown stack renders a pending chip, never the sentinel', () => {
   assert.match(html, /class="placeholder"/);
 });
 
-test('project images are lazy and fall back when the screenshot is missing', () => {
+// Ariel asked for the repository screenshots to go: the cards are read for
+// their prose, and an empty frame on every one of them said nothing.
+test('project cards carry no screenshot at all', () => {
   const html = renderExperience('en');
-  assert.match(html, /loading="lazy"/);
-  assert.match(html, /images\/projects\/placeholder\.svg/);
+  for (const card of html.matchAll(/<article class="card project-card">[\s\S]*?<\/article>/g)) {
+    assert.doesNotMatch(card[0], /<img/, 'a project card still renders an image');
+  }
+  assert.doesNotMatch(html, /images\/projects\//);
 });
 
 test('events live at the experience anchor the command targets', () => {
   assert.match(renderExperience('en'), /id="events"/);
+});
+
+test('every event appears with its date, description and a logo', () => {
+  const html = renderExperience('en');
+  assert.ok(events.length >= 3, 'fixture no longer covers the event list');
+  for (const e of events) {
+    assert.match(html, rendered(e.name));
+    assert.match(html, rendered(e.date));
+    assert.match(html, rendered(t(e.descriptionKey)));
+  }
+  const logos = [...html.matchAll(/<img[^>]+class="event-logo"/g)];
+  assert.equal(logos.length, events.length, 'not every event has a logo slot');
+});
+
+test('a pending event logo falls back to the placeholder image', () => {
+  const html = renderExperience('en');
+  assert.ok(
+    events.some((e) => !e.logo),
+    'fixture no longer covers a pending logo',
+  );
+  assert.match(html, /images\/placeholder\.svg/);
 });
 
 test('contact lists both emails and LinkedIn as working links', () => {

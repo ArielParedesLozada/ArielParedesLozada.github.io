@@ -80,10 +80,10 @@ grep -n '\bPLACEHOLDER\b' src/content/data.js src/content/i18n.js
 | 4 | Galacorp role | `i18n.js`, `company.galacorp.role` | `/experience/` |
 | 5 | ASSA role | `i18n.js`, `company.assa.role` | `/experience/` |
 | 6 | Procoineec role and stack | `i18n.js` `project.procoineec.role`; `data.js` `projects[0].stack` | `/experience/#projects` |
-| 7 | Hackathon name, date, result | `i18n.js` `event.ctt-fisei.name`/`.result`; `data.js` `events[0].date` | `/experience/#events` |
+| 7 | Event logos | `data.js`, `events[].logo` — drop files under `images/events/` and point at them | `/experience/#events` |
 | 8 | Three certification links | `data.js`, `certifications[]` — Network Support and Security, VI Congreso CSEI 2024, ESP32 | `/education/#certs` |
 | 9 | ESP32 certificate issuer | `data.js`, `certifications[5].issuer` | `/education/#certs` |
-| 10 | Project screenshots | `data.js`, `projects[].image` | `/experience/#projects` |
+| 10 | Certificate previews | `data.js`, `certifications[].preview` — drop scans under `images/certs/` and point at them | `/education/#certs` |
 | 11 | CV PDF | see below | `/about/#cv` |
 
 ## Two manual steps
@@ -121,6 +121,22 @@ grep -n '\bPLACEHOLDER\b' src/content/data.js src/content/i18n.js
 - **Terminal navigation uses root-relative paths** (`/skills/`). Correct for
   a GitHub *user* site served at the domain root. If this ever moves under a
   subpath, those break while the menu links keep working.
+- **The whole page is set in the monospace face**, not just the command line:
+  `body` takes `--font-mono` in `css/base.css`. `--font-sans` survives in
+  `tokens.css` for anything that needs to opt out, and nothing does today.
+- **Three knobs control how big everything is.** `html { font-size: 112.5% }`
+  in `base.css` scales the entire site, since every other size is in `rem`.
+  The command line has its own pair, `--terminal-size` and `--terminal-row` in
+  `tokens.css`; if you grow the output's `max-height` in `terminal.css`, grow
+  `body { padding-bottom }` in `layout.css` by the same amount or the last
+  section slides under the prompt.
+- **Projects carry no screenshot.** Ariel asked for them to go: the cards are
+  read for their prose, and an empty frame on every one of them said nothing.
+  The only images left outside `/skills/` are the portrait, the certificate
+  previews and the event logos.
+- **A pending image is a visible stand-in, not a gap.** Both certificate
+  previews and event logos fall back to `images/placeholder.svg`, dimmed via
+  `[data-missing]`, so the layout under review is the layout you will get.
 - **Hobbies live under `/about/#hobbies`** and events under
   `/experience/#events`, since the five-section menu had no room for them.
 

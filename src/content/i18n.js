@@ -94,22 +94,25 @@ export const DICT = {
 
     'project.procoineec.description': 'Company website, built during the Galacorp internship.',
     'project.procoineec.role': PLACEHOLDER,
-    'project.procoineec.imageAlt': 'Screenshot of the Procoineec website',
     'project.odoo-das.description':
       'E-learning platform built on Odoo 18 Community for the Academia Virtual de Tecnología, covering course e-commerce, Ecuadorian electronic invoicing with XAdES-BES signing and SRI integration, an LMS, and segmented email marketing.',
     'project.odoo-das.role': 'Developed the certificates module.',
-    'project.odoo-das.imageAlt': 'Screenshot of the Odoo-DAS platform',
     'project.juntagua.description':
       "Professional project, deployed and in use at the Junta de Agua de Santa Rosa. Electronic invoicing system integrated with Ecuador's SRI for authorization and submission of digital vouchers, including an accounting module and multi-company support.",
     'project.juntagua.role': 'Backend lead, and still maintaining it.',
-    'project.juntagua.imageAlt': 'Screenshot of the Junta de Agua de Santa Rosa billing system',
     'project.ctt-fisei.description':
       'Hackathon project. Multi-agent conversational sales ecosystem for the FISEI technology transfer centre: a Telegram advisor over a real 21-course catalogue, per-message intent classification, and transparent handover to a human operator through a dashboard.',
     'project.ctt-fisei.role': 'Built the backend and the conversational agent.',
-    'project.ctt-fisei.imageAlt': 'Screenshot of the CTT-FISEI conversational advisor dashboard',
+    'project.polizas-tungurahua.description':
+      'Insurance policy management system for the Gobierno Provincial de Tungurahua. Built as coursework, but with the architecture and the containerised infrastructure a real deployment needs: a layered .NET backend, an Angular front end and a Postgres database, all reproducible from compose files.',
+    'project.polizas-tungurahua.role': 'Project lead.',
+    'project.gasolineras.description':
+      'Distributed systems coursework: a multi-node platform for fuel stations, split into services that talk over gRPC and RabbitMQ instead of a shared database, with geospatial queries on PostGIS and horizontal sharding through Citus.',
+    'project.gasolineras.role': 'Project lead.',
 
-    'event.ctt-fisei.name': PLACEHOLDER,
-    'event.ctt-fisei.result': PLACEHOLDER,
+    'event.grok-ambato.description': 'Artificial intelligence conference, held in Ambato.',
+    'event.hatunsoft.description': 'Hackathon built around a real programming case.',
+    'event.csei-2024.description': 'International congress on technology and engineering.',
 
     'skills.backend': 'backend',
     'skills.frontend': 'frontend',
@@ -132,13 +135,15 @@ export const DICT = {
     'ui.summary': 'Summary',
     'ui.objective': 'Objective',
     'ui.certificate': 'Certificate',
-    'ui.screenshot': 'Screenshot',
+    'ui.preview': 'Preview',
+    'ui.previewPending': 'Preview pending',
+    'ui.logo': 'Logo',
+    'ui.description': 'Description',
     'ui.liveSite': 'Live site',
     'ui.github': 'GitHub',
     'ui.viewCertificate': 'View certificate',
     'ui.downloadCv': 'Download CV',
     'ui.cvUnavailable': 'The CV is not published yet. Reach out by email and Ariel will send it.',
-    'ui.screenshotPending': 'Screenshot pending',
     'ui.menu': 'Menu',
     'ui.skipLink': 'Skip to main content',
     'ui.email': 'Email',
@@ -235,22 +240,25 @@ export const DICT = {
 
     'project.procoineec.description': 'Sitio web corporativo, desarrollado durante las prácticas en Galacorp.',
     'project.procoineec.role': PLACEHOLDER,
-    'project.procoineec.imageAlt': 'Captura del sitio web de Procoineec',
     'project.odoo-das.description':
       'Plataforma de e-learning construida sobre Odoo 18 Community para la Academia Virtual de Tecnología: comercio electrónico de cursos, facturación electrónica ecuatoriana con firma XAdES-BES e integración con el SRI, un LMS y marketing por correo segmentado.',
     'project.odoo-das.role': 'Se desarrolló el módulo de certificados.',
-    'project.odoo-das.imageAlt': 'Captura de la plataforma Odoo-DAS',
     'project.juntagua.description':
       'Proyecto profesional, desplegado y en uso en la Junta de Agua de Santa Rosa. Sistema de facturación electrónica integrado con el SRI del Ecuador para la autorización y el envío de comprobantes digitales, con módulo contable y soporte multiempresa.',
     'project.juntagua.role': 'Jefe de backend, y mantenimiento hasta el momento.',
-    'project.juntagua.imageAlt': 'Captura del sistema de facturación de la Junta de Agua de Santa Rosa',
     'project.ctt-fisei.description':
       'Proyecto de hackatón. Ecosistema conversacional de ventas multiagente para el centro de transferencia tecnológica de la FISEI: un asesor en Telegram sobre un catálogo real de 21 cursos, clasificación de intención por mensaje y traspaso transparente a un operador humano mediante un tablero.',
     'project.ctt-fisei.role': 'Se construyó el backend y el agente conversacional.',
-    'project.ctt-fisei.imageAlt': 'Captura del tablero del asesor conversacional CTT-FISEI',
+    'project.polizas-tungurahua.description':
+      'Sistema de gestión de pólizas para el Gobierno Provincial de Tungurahua. Nació como proyecto académico, pero con la arquitectura y la infraestructura en contenedores que exige un despliegue real: backend .NET por capas, front end en Angular y base de datos Postgres, todo reproducible desde archivos de compose.',
+    'project.polizas-tungurahua.role': 'Jefe de proyecto.',
+    'project.gasolineras.description':
+      'Proyecto académico de aplicaciones distribuidas: una plataforma multinodo para gasolineras, repartida en servicios que se comunican por gRPC y RabbitMQ en lugar de una base compartida, con consultas geoespaciales en PostGIS y particionamiento horizontal mediante Citus.',
+    'project.gasolineras.role': 'Jefe de proyecto.',
 
-    'event.ctt-fisei.name': PLACEHOLDER,
-    'event.ctt-fisei.result': PLACEHOLDER,
+    'event.grok-ambato.description': 'Conferencia de inteligencia artificial, en Ambato.',
+    'event.hatunsoft.description': 'Hackatón con un caso de programación real.',
+    'event.csei-2024.description': 'Congreso internacional de tecnología e ingeniería.',
 
     'skills.backend': 'backend',
     'skills.frontend': 'frontend',
@@ -273,13 +281,15 @@ export const DICT = {
     'ui.summary': 'Resumen',
     'ui.objective': 'Objetivo',
     'ui.certificate': 'Certificado',
-    'ui.screenshot': 'Captura',
+    'ui.preview': 'Vista previa',
+    'ui.previewPending': 'Vista previa pendiente',
+    'ui.logo': 'Logo',
+    'ui.description': 'Descripción',
     'ui.liveSite': 'Sitio en vivo',
     'ui.github': 'GitHub',
     'ui.viewCertificate': 'Ver certificado',
     'ui.downloadCv': 'Descargar hoja de vida',
     'ui.cvUnavailable': 'La hoja de vida aún no está publicada. Escríbele por correo y te la envía.',
-    'ui.screenshotPending': 'Captura pendiente',
     'ui.menu': 'Menú',
     'ui.skipLink': 'Saltar al contenido principal',
     'ui.email': 'Correo',

@@ -30,28 +30,46 @@ export const education = [
   },
 ];
 
+// `preview` is the scan of the certificate itself, shown on the card. null
+// means Ariel has not uploaded it yet and the shared placeholder stands in;
+// drop a file under images/certs/ and point at it to replace the frame.
 export const certifications = [
-  { id: 'network-support', titleKey: 'cert.network-support', issuer: 'Cisco Networking Academy', url: PLACEHOLDER },
+  {
+    id: 'network-support',
+    titleKey: 'cert.network-support',
+    issuer: 'Cisco Networking Academy',
+    url: PLACEHOLDER,
+    preview: null,
+  },
   {
     id: 'iot',
     titleKey: 'cert.iot',
     issuer: 'Cisco Networking Academy',
     url: 'https://drive.google.com/file/d/1A3UR8xqxwFKHUbnLmWi-nqWhFtsWoNCH/view?usp=drive_link',
+    preview: null,
   },
-  { id: 'csei-2024', titleKey: 'cert.csei-2024', issuer: 'Universidad Técnica de Ambato', url: PLACEHOLDER },
+  {
+    id: 'csei-2024',
+    titleKey: 'cert.csei-2024',
+    issuer: 'Universidad Técnica de Ambato',
+    url: PLACEHOLDER,
+    preview: null,
+  },
   {
     id: 'python-basics',
     titleKey: 'cert.python-basics',
     issuer: 'Cisco-FISEI',
     url: 'https://drive.google.com/file/d/1g9zp9OHS-JB7UTB1fk4sPmgb817q-Ygd/view?usp=drive_link',
+    preview: null,
   },
   {
     id: 'django-web',
     titleKey: 'cert.django-web',
     issuer: 'Universidad Técnica de Ambato',
     url: 'https://drive.google.com/file/d/1boMu6_79RG7XmIyXS4iV47I9eefMN2r6/view?usp=drive_link',
+    preview: null,
   },
-  { id: 'esp32', titleKey: 'cert.esp32', issuer: PLACEHOLDER, url: PLACEHOLDER },
+  { id: 'esp32', titleKey: 'cert.esp32', issuer: PLACEHOLDER, url: PLACEHOLDER, preview: null },
 ];
 
 export const companies = [
@@ -71,6 +89,8 @@ export const companies = [
   },
 ];
 
+// Projects carry no screenshot: the cards are read for their prose, and an
+// empty frame on every one of them said less than nothing.
 export const projects = [
   {
     id: 'procoineec',
@@ -78,8 +98,6 @@ export const projects = [
     descriptionKey: 'project.procoineec.description',
     roleKey: 'project.procoineec.role',
     stack: [PLACEHOLDER],
-    image: null,
-    imageAltKey: 'project.procoineec.imageAlt',
     links: [{ labelKey: 'ui.liveSite', url: 'https://procoineec.com/' }],
   },
   {
@@ -88,8 +106,6 @@ export const projects = [
     descriptionKey: 'project.odoo-das.description',
     roleKey: 'project.odoo-das.role',
     stack: ['Python', 'Odoo', 'Postgres', 'Docker'],
-    image: null,
-    imageAltKey: 'project.odoo-das.imageAlt',
     links: [{ labelKey: 'ui.github', url: 'https://github.com/ArielParedesLozada/Odoo-DAS' }],
   },
   {
@@ -98,8 +114,6 @@ export const projects = [
     descriptionKey: 'project.juntagua.description',
     roleKey: 'project.juntagua.role',
     stack: ['NestJS', 'Prisma', 'MySQL', 'Docker', 'GitHub Actions'],
-    image: null,
-    imageAltKey: 'project.juntagua.imageAlt',
     links: [
       {
         labelKey: 'ui.liveSite',
@@ -114,9 +128,30 @@ export const projects = [
     descriptionKey: 'project.ctt-fisei.description',
     roleKey: 'project.ctt-fisei.role',
     stack: ['TypeScript', 'React', 'Supabase', 'Google Gemini'],
-    image: null,
-    imageAltKey: 'project.ctt-fisei.imageAlt',
     links: [{ labelKey: 'ui.github', url: 'https://github.com/ArielParedesLozada/mini-hackaton' }],
+  },
+  {
+    id: 'polizas-tungurahua',
+    name: 'Gestión de Pólizas — Tungurahua',
+    descriptionKey: 'project.polizas-tungurahua.description',
+    roleKey: 'project.polizas-tungurahua.role',
+    stack: ['.NET', 'Angular', 'Postgres', 'Docker'],
+    links: [
+      { labelKey: 'ui.github', url: 'https://github.com/ArielParedesLozada/Proyecto-Gestion-7ASW' },
+    ],
+  },
+  {
+    id: 'gasolineras',
+    name: 'Sistema Distribuido para Gasolineras',
+    descriptionKey: 'project.gasolineras.description',
+    roleKey: 'project.gasolineras.role',
+    stack: ['.NET', 'Express', 'RabbitMQ', 'gRPC', 'React', 'PostGIS', 'Citus'],
+    links: [
+      {
+        labelKey: 'ui.github',
+        url: 'https://github.com/ArielParedesLozada/Proyecto-Final-Distribuidas',
+      },
+    ],
   },
 ];
 
@@ -156,13 +191,29 @@ export const skills = [
   },
 ];
 
+// `logo` works like a certificate preview: null falls back to the shared
+// placeholder until the real mark lands under images/events/.
 export const events = [
   {
-    id: 'ctt-fisei-hackathon',
-    nameKey: 'event.ctt-fisei.name',
-    kind: 'hackathon',
-    date: PLACEHOLDER,
-    resultKey: 'event.ctt-fisei.result',
+    id: 'grok-ambato',
+    name: 'Grok Bot Ambato Meetup',
+    date: '2026',
+    descriptionKey: 'event.grok-ambato.description',
+    logo: null,
+  },
+  {
+    id: 'hatunsoft',
+    name: 'Hatunsoft',
+    date: '2025',
+    descriptionKey: 'event.hatunsoft.description',
+    logo: null,
+  },
+  {
+    id: 'csei-2024',
+    name: 'CSEI 2024',
+    date: '2024',
+    descriptionKey: 'event.csei-2024.description',
+    logo: null,
   },
 ];
 

@@ -4,16 +4,20 @@
   box-sizing: border-box;
 }
 
+/* Everything is scaled from here: 112.5% of the browser default makes the
+   whole site a step larger without touching a single rem value below. */
 html {
-  font-size: 100%;
+  font-size: 112.5%;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
+  /* The site is a terminal, so the terminal face is the default, not the
+     exception. --font-sans is kept in tokens.css for anything that opts out. */
+  font-family: var(--font-mono);
   font-size: var(--step-0);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 a {

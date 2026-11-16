@@ -9,7 +9,8 @@ import {
   isRealUrl,
 } from './helpers.js';
 
-const FALLBACK_IMAGE = 'images/projects/placeholder.svg';
+// Stands in for an event logo Ariel has not uploaded yet.
+const FALLBACK_IMAGE = 'images/placeholder.svg';
 
 function stackChips(stack, lang) {
   return stack
@@ -31,18 +32,8 @@ function linkList(links, lang) {
     .join('\n              ');
 }
 
-function projectCard(project, lang, assetPrefix) {
-  const src = `${assetPrefix}${project.image ?? FALLBACK_IMAGE}`;
-  const missing = project.image ? '' : ' data-missing="true"';
-  const caption = project.image
-    ? ''
-    : `<p class="card-meta" data-i18n="ui.screenshotPending">${escapeHtml(t('ui.screenshotPending', lang))}</p>`;
-
+function projectCard(project, lang) {
   return `        <article class="card project-card">
-          <img src="${escapeHtml(src)}" alt="${escapeHtml(t(project.imageAltKey, lang))}"
-               loading="lazy" width="1200" height="675"${missing}
-               onerror="this.src='${assetPrefix}${FALLBACK_IMAGE}'">
-          ${caption}
           <h3>${escapeHtml(project.name)}</h3>
           <p>${labelledProse('ui.summary', project.descriptionKey, lang)}</p>
           <p>${labelledProse('ui.role', project.roleKey, lang)}</p>
@@ -68,16 +59,26 @@ export function render(lang = 'en', assetPrefix = '') {
     )
     .join('\n');
 
-  const projectCards = projects.map((p) => projectCard(p, lang, assetPrefix)).join('\n');
+  const projectCards = projects.map((p) => projectCard(p, lang)).join('\n');
 
+  // The logo is the one image left on this page: an event is recognised by
+  // its mark long before its name is read.
   const eventCards = events
-    .map(
-      (e) => `        <article class="card">
-          <h3>${labelledProse('ui.summary', e.nameKey, lang)}</h3>
-          <p class="card-meta">${labelledField('ui.date', e.date, lang)}</p>
-          <p>${labelledProse('ui.result', e.resultKey, lang)}</p>
-        </article>`,
-    )
+    .map((e) => {
+      const src = `${assetPrefix}${e.logo ?? FALLBACK_IMAGE}`;
+      const missing = e.logo ? '' : ' data-missing="true"';
+      return `        <article class="card event-card">
+          <img class="event-logo" src="${escapeHtml(src)}"
+               alt="${escapeHtml(`${t('ui.logo', lang)}: ${e.name}`)}"
+               loading="lazy" width="96" height="96"${missing}
+               onerror="this.src='${assetPrefix}${FALLBACK_IMAGE}'">
+          <div class="event-body">
+            <h3>${escapeHtml(e.name)}</h3>
+            <p class="card-meta">${labelledField('ui.date', e.date, lang)}</p>
+            <p>${labelledProse('ui.description', e.descriptionKey, lang)}</p>
+          </div>
+        </article>`;
+    })
     .join('\n');
 
   return `      <section class="section" aria-labelledby="companies-heading">

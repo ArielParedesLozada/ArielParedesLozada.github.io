@@ -2,7 +2,10 @@ import { education, certifications } from '../content/data.js';
 import { t } from '../content/i18n.js';
 import { escapeHtml, label, fieldOr, labelledField, isRealUrl, placeholderChip } from './helpers.js';
 
-export function render(lang = 'en') {
+// Stands in until Ariel uploads the scans under images/certs/.
+const FALLBACK_PREVIEW = 'images/placeholder.svg';
+
+export function render(lang = 'en', assetPrefix = '') {
   const uni = education
     .map((e) => {
       const achievements = e.achievementKeys
@@ -26,7 +29,17 @@ export function render(lang = 'en') {
       const access = isRealUrl(cert.url)
         ? `<a href="${escapeHtml(cert.url)}" rel="noopener" target="_blank">${label('ui.viewCertificate', lang)}</a>`
         : placeholderChip('ui.certificate', lang);
-      return `        <li class="card">
+      const src = `${assetPrefix}${cert.preview ?? FALLBACK_PREVIEW}`;
+      const missing = cert.preview ? '' : ' data-missing="true"';
+      const caption = cert.preview
+        ? ''
+        : `<p class="card-meta" data-i18n="ui.previewPending">${escapeHtml(t('ui.previewPending', lang))}</p>`;
+      return `        <li class="card cert-card">
+          <img class="cert-preview" src="${escapeHtml(src)}"
+               alt="${escapeHtml(`${t('ui.preview', lang)}: ${t(cert.titleKey, lang)}`)}"
+               loading="lazy" width="800" height="600"${missing}
+               onerror="this.src='${assetPrefix}${FALLBACK_PREVIEW}'">
+          ${caption}
           <h3>${label(cert.titleKey, lang)}</h3>
           <p class="card-meta">${labelledField('ui.issuer', cert.issuer, lang)}</p>
           ${access}

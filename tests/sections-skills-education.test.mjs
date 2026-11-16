@@ -44,6 +44,19 @@ test('a certification without a link shows a pending chip, not a dead anchor', (
   assert.doesNotMatch(html, /PLACEHOLDER_PAPU/);
 });
 
+// Ariel will upload the scans; until then every certification shows the
+// placeholder so the layout he reviews is the layout he will get.
+test('every certification shows a preview image', () => {
+  const html = renderEducation('en', '');
+  const previews = [...html.matchAll(/<img[^>]+class="cert-preview"/g)];
+  assert.equal(previews.length, certifications.length);
+  assert.match(html, /images\/placeholder\.svg/);
+});
+
+test('certification previews honour the asset prefix', () => {
+  assert.match(renderEducation('en', '../'), /src="\.\.\/images\//);
+});
+
 test('the unknown semester renders as a chip', () => {
   assert.match(renderEducation('en'), /class="placeholder"/);
 });

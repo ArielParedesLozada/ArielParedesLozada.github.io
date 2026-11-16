@@ -3,7 +3,8 @@
 
 body {
   /* Room for the fixed command line. */
-  padding-bottom: 9rem;
+  /* Clears the fixed command line: 11rem of output plus its input row. */
+  padding-bottom: 12rem;
 }
 
 .screen {

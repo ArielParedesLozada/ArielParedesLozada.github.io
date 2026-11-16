@@ -27,8 +27,8 @@ test('t throws on an unknown key', () => {
   assert.throws(() => t('nope.nope'), /missing i18n key: nope\.nope/);
 });
 
-test('the four projects carry stack, role and at least one link', () => {
-  assert.equal(projects.length, 4);
+test('every project carries stack, role and at least one link', () => {
+  assert.equal(projects.length, 6);
   for (const p of projects) {
     assert.ok(p.stack.length > 0, `${p.id} has an empty stack`);
     assert.ok(p.links.length > 0, `${p.id} has no links`);
