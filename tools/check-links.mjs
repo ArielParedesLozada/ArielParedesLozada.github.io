@@ -26,8 +26,11 @@ export function classify(value) {
 // sits in, so it resolves against the page's own directory, not the root.
 export async function checkLocal(value, rootDir, sourceFile = '') {
   const stripped = value.split('#')[0].split('?')[0];
-  const base = path.resolve(rootDir, path.dirname(sourceFile));
-  const resolved = path.resolve(base, stripped);
+  // A leading slash means the site's root, not the filesystem's.
+  const base = stripped.startsWith('/')
+    ? rootDir
+    : path.resolve(rootDir, path.dirname(sourceFile));
+  const resolved = path.resolve(base, `.${path.sep}${stripped.replace(/^\/+/, '')}`);
   try {
     await access(resolved);
     return { ok: true, resolved };

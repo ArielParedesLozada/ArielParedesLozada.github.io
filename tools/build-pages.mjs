@@ -26,7 +26,9 @@ export const PAGES = [
   { id: 'education', dir: 'education', file: 'index.html', menu: true, render: education.render },
   { id: 'experience', dir: 'experience', file: 'index.html', menu: true, render: experience.render },
   { id: 'contact', dir: 'contact', file: 'index.html', menu: true, render: contact.render },
-  { id: 'notfound', dir: '', file: '404.html', menu: true, render: notfound.render },
+  // GitHub Pages serves 404.html at whatever URL was requested, so this page
+  // addresses everything from the domain root instead of relatively.
+  { id: 'notfound', dir: '', file: '404.html', menu: true, prefix: '/', render: notfound.render },
 ];
 
 export { menuMarkup, NAV_IDS };
@@ -42,7 +44,7 @@ export function renderTemplate(template, vars) {
 }
 
 export function pageVars(page, template, lang = 'en') {
-  const assetPrefix = page.dir === '' ? '' : '../';
+  const assetPrefix = page.prefix ?? (page.dir === '' ? '' : '../');
   const promptPath = page.dir === '' ? '~' : `~/${page.id}`;
   return {
     lang,
@@ -57,6 +59,11 @@ export function pageVars(page, template, lang = 'en') {
     credit: t('ui.credit', lang),
     creditTail: t('ui.creditTail', lang),
     menu: page.menu ? menuMarkup(NAV_IDS.includes(page.id) ? page.id : null, assetPrefix, lang) : '',
+    // The boot screen has no visible menu; without JS its command line is
+    // inert, so the no-JS fallback has to carry the links itself.
+    noscriptNav: page.menu
+      ? ''
+      : menuMarkup(null, assetPrefix, lang).replace('class="site-menu"', 'class="noscript-nav"'),
     body: page.render(lang, assetPrefix),
   };
 }

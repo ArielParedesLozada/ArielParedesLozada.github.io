@@ -45,6 +45,26 @@ test('the boot page ships the command line but no menu', async () => {
   assert.doesNotMatch(html, /class="site-menu"/);
 });
 
+// Final review finding: a visitor with JavaScript disabled landed on / with a
+// dead command line, no menu, and a notice claiming the page works without JS.
+test('the boot page offers navigation to a visitor without JavaScript', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const noscript = html.slice(html.indexOf('<noscript>'), html.indexOf('</noscript>'));
+  for (const id of ['about', 'skills', 'education', 'experience', 'contact']) {
+    assert.match(noscript, new RegExp(`href="${id}/"`), `no ${id} link for a no-JS visitor`);
+  }
+});
+
+// Final review finding: GitHub Pages serves 404.html at the URL that was
+// requested, so relative asset paths resolve against that missing directory.
+test('404.html addresses its assets and links from the domain root', async () => {
+  const html = await readFile(new URL('../404.html', import.meta.url), 'utf8');
+  assert.match(html, /href="\/css\/tokens\.css"/);
+  assert.match(html, /src="\/js\/main\.js"/);
+  assert.match(html, /href="\/about\/"/);
+  assert.doesNotMatch(html, /href="css\//);
+});
+
 test('generated pages contain no unsubstituted template token', async () => {
   for (const file of ['index.html', '404.html', 'about/index.html']) {
     const html = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');

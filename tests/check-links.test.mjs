@@ -11,6 +11,15 @@ test('collectHtmlFiles finds pages one directory down', async () => {
   assert.ok(!files.some((f) => f.startsWith('docs/')));
 });
 
+test('a root-relative link is resolved against the repo root, not the filesystem', async () => {
+  // 404.html addresses everything from the domain root. Handing "/css/..." to
+  // path.resolve discards the base and looks for it at the filesystem root.
+  const hit = await checkLocal('/css/tokens.css', repoRoot, '404.html');
+  assert.equal(hit.ok, true);
+  const miss = await checkLocal('/css/nope.css', repoRoot, '404.html');
+  assert.equal(miss.ok, false);
+});
+
 test('a local link is resolved against the page that contains it', async () => {
   // about/index.html links up and over to ../skills/ — resolving that against
   // the repo root instead of the page's own directory escapes the repo.
