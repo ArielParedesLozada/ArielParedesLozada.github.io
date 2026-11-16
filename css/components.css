@@ -169,3 +169,127 @@
   padding: var(--space-4);
   margin: var(--space-4);
 }
+
+/* ---- fastfetch block (boot screen) ---- */
+.fetch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+.fetch-art {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.fetch-info {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 16rem;
+  flex: 1;
+}
+
+.fetch-title {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.fetch-at {
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+.fetch-rule {
+  color: var(--border);
+  font-family: var(--font-mono);
+}
+
+.fetch-row {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+
+.fetch-key {
+  color: var(--accent);
+  min-width: 7rem;
+}
+
+.fetch-key::after {
+  content: ':';
+}
+
+.boot-hint {
+  margin-top: var(--space-5);
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+}
+
+/* ---- about ---- */
+.about-identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: flex-start;
+}
+
+.portrait {
+  width: 10rem;
+  height: 10rem;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.about-name {
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.about-mini {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.about-mini h2 {
+  color: var(--accent);
+  font-size: var(--step-0);
+  margin-bottom: var(--space-2);
+}
+
+.field-key {
+  color: var(--accent);
+}
+
+.field-key::after {
+  content: ':';
+  margin-right: 0.35ch;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.chip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--step--1);
+}
+
+.cv-block {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}

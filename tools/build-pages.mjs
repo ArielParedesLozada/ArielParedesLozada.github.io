@@ -75,7 +75,7 @@ export function pageVars(page, template, lang = 'en') {
     credit: t('ui.credit', lang),
     creditTail: t('ui.creditTail', lang),
     menu: page.menu ? menuMarkup(NAV_IDS.includes(page.id) ? page.id : null, assetPrefix, lang) : '',
-    body: page.render(lang),
+    body: page.render(lang, assetPrefix),
   };
 }
 
