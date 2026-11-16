@@ -41,6 +41,14 @@ test('an unknown subsection reports usage without navigating', () => {
   assert.match(r.lines.join('\n'), /usage/i);
 });
 
+test('a visitor arriving by shared link is not gated on a section page', () => {
+  // Reached /experience/ directly, never ran `start`: the gate is theatre on
+  // the boot screen only, not a lock on a page they are already reading.
+  const shared = { page: 'experience', entered: false, lang: 'en' };
+  assert.equal(resolve('skills', shared).navigate, '/skills/');
+  assert.match(resolve('help', shared).lines.join('\n'), /neofetch/);
+});
+
 test('cv navigates to the about anchor rather than downloading', () => {
   assert.equal(resolve('cv', inside).navigate, '/about/#cv');
 });

@@ -8,6 +8,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { t } from '../src/content/i18n.js';
+import { menuMarkup, NAV_IDS } from '../src/sections/menu.js';
 import * as boot from '../src/sections/boot.js';
 import * as about from '../src/sections/about.js';
 import * as skills from '../src/sections/skills.js';
@@ -17,8 +18,6 @@ import * as contact from '../src/sections/contact.js';
 import * as notfound from '../src/sections/notfound.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-
-export const NAV_IDS = ['about', 'skills', 'education', 'experience', 'contact'];
 
 export const PAGES = [
   { id: 'boot', dir: '', file: 'index.html', menu: false, render: boot.render },
@@ -30,6 +29,8 @@ export const PAGES = [
   { id: 'notfound', dir: '', file: '404.html', menu: true, render: notfound.render },
 ];
 
+export { menuMarkup, NAV_IDS };
+
 export function renderTemplate(template, vars) {
   let out = template;
   for (const [key, value] of Object.entries(vars)) {
@@ -38,25 +39,6 @@ export function renderTemplate(template, vars) {
   const leftover = out.match(/\{\{(\w+)\}\}/);
   if (leftover) throw new Error(`unsubstituted template token: ${leftover[1]}`);
   return out;
-}
-
-export function menuMarkup(activeId, assetPrefix, lang = 'en') {
-  const items = NAV_IDS.map((id) => {
-    const key = `nav.${id}`;
-    const current = id === activeId ? ' aria-current="page"' : '';
-    return (
-      `        <li><a href="${assetPrefix}${id}/" data-i18n="${key}"${current}>` +
-      `${t(key, lang)}</a></li>`
-    );
-  }).join('\n');
-
-  return [
-    '    <nav class="site-menu" aria-label="Primary">',
-    '      <ul>',
-    items,
-    '      </ul>',
-    '    </nav>',
-  ].join('\n');
 }
 
 export function pageVars(page, template, lang = 'en') {
