@@ -1,3 +1,4 @@
+/* ---- window chrome ---- */
 .window-chrome {
   display: flex;
   align-items: center;
@@ -5,7 +6,6 @@
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-bottom: none;
-  border-radius: var(--radius) var(--radius) 0 0;
   padding: var(--space-2) var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--step--1);
@@ -20,13 +20,23 @@
   color: var(--accent-dim);
 }
 
+/* ---- cards ---- */
 .card {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--space-4);
   box-shadow: var(--shadow);
-  margin-bottom: var(--space-4);
+}
+
+.card + .card {
+  margin-top: var(--space-4);
+}
+
+.card h3 {
+  color: var(--fg);
+  font-size: var(--step-0);
+  margin-bottom: var(--space-1);
 }
 
 .card-meta {
@@ -34,33 +44,30 @@
   font-size: var(--step--1);
 }
 
-.timeline {
+.card-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: var(--space-4);
+  list-style: none;
 }
 
-.experience-group h3 {
-  margin: var(--space-5) 0 var(--space-3);
-  color: var(--accent);
+.card-grid .card + .card {
+  margin-top: 0;
 }
 
-.skill-group h3 {
-  margin: var(--space-5) 0 var(--space-3);
-  color: var(--accent);
-}
-
-.skill-chips {
+/* ---- chips ---- */
+.chips {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
   list-style: none;
 }
 
-.skill-chip {
+.chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  background: var(--bg-elevated);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--space-1) var(--space-3);
@@ -72,12 +79,25 @@
   height: 1rem;
 }
 
+.skill-group h2 {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  margin-bottom: var(--space-3);
+}
+
+.skill-group + .skill-group {
+  margin-top: var(--space-5);
+}
+
+/* ---- buttons ---- */
 .btn {
   display: inline-block;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius);
   border: 1px solid var(--border);
   font-weight: 600;
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -91,12 +111,13 @@
   color: var(--fg);
 }
 
-.btn[aria-disabled="true"] {
+.btn[aria-disabled='true'] {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
+/* ---- pending marker ---- */
 .placeholder {
   display: inline-block;
   background: color-mix(in srgb, var(--warn) 20%, transparent);
@@ -108,66 +129,49 @@
   font-style: italic;
 }
 
+.field-key {
+  color: var(--accent);
+}
+
+.field-key::after {
+  content: ':';
+  margin-right: 0.35ch;
+}
+
+/* ---- projects ---- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: var(--space-4);
 }
 
 .project-card img {
   width: 100%;
+  height: auto;
   border-radius: var(--radius);
+  border: 1px solid var(--border);
   margin-bottom: var(--space-3);
 }
 
-.contact-links {
+.project-card img[data-missing] {
+  opacity: 0.55;
+}
+
+.project-card p {
+  margin-bottom: var(--space-2);
+}
+
+/* ---- link lists ---- */
+.link-list {
   list-style: none;
   display: grid;
   gap: var(--space-2);
-  margin-top: var(--space-5);
+  margin-top: var(--space-3);
 }
 
-.form-field {
-  display: grid;
-  gap: var(--space-1);
-  margin-bottom: var(--space-3);
-}
-
-.form-field label {
-  font-size: var(--step--1);
-  color: var(--fg-muted);
-}
-
-.form-field input,
-.form-field textarea {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: var(--space-2);
-  color: var(--fg);
-  font-family: var(--font-sans);
-}
-
-.hero-photo {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--border);
-  margin-bottom: var(--space-4);
-}
-
-.cv-note {
-  font-size: var(--step--1);
-  color: var(--fg-muted);
-  margin-top: var(--space-2);
-}
-
-.noscript-notice {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  padding: var(--space-4);
-  margin: var(--space-4);
+.contact-list a {
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
 }
 
 /* ---- fastfetch block (boot screen) ---- */
@@ -210,6 +214,7 @@
 
 .fetch-row {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--step--1);
@@ -251,6 +256,11 @@
   font-weight: 700;
 }
 
+.about-summary,
+.about-objective {
+  margin-top: var(--space-2);
+}
+
 .about-mini {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -264,28 +274,12 @@
   margin-bottom: var(--space-2);
 }
 
-.field-key {
-  color: var(--accent);
-}
-
-.field-key::after {
-  content: ':';
-  margin-right: 0.35ch;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+.about-mini ul {
   list-style: none;
-}
-
-.chip {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: var(--space-1) var(--space-3);
+  display: grid;
+  gap: var(--space-1);
   font-size: var(--step--1);
+  color: var(--fg-muted);
 }
 
 .cv-block {
@@ -294,29 +288,27 @@
   justify-items: start;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: var(--space-4);
-  list-style: none;
+.cv-note {
+  font-size: var(--step--1);
+  color: var(--fg-muted);
 }
 
-.skill-group + .skill-group {
-  margin-top: var(--space-5);
+.noscript-notice {
+  max-width: 68rem;
+  margin: var(--space-4) auto;
+  padding: var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--warn);
+  border-radius: var(--radius);
 }
 
-.link-list {
-  list-style: none;
-  display: grid;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
-}
+@media (max-width: 40rem) {
+  .fetch-art {
+    font-size: 0.6rem;
+  }
 
-.contact-list a {
-  font-family: var(--font-mono);
-  word-break: break-all;
-}
-
-.project-card img[data-missing] {
-  opacity: 0.55;
+  .portrait {
+    width: 7rem;
+    height: 7rem;
+  }
 }

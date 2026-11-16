@@ -1,104 +1,104 @@
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: var(--accent);
-  z-index: 100;
+/* Page shell: one terminal window per page, with the command line pinned to
+   the bottom of the viewport so it is present on every screen. */
+
+body {
+  /* Room for the fixed command line. */
+  padding-bottom: 9rem;
 }
 
-.skip-link:focus {
-  position: fixed;
-  top: var(--space-2);
-  left: var(--space-2);
-  width: auto;
-  height: auto;
-  clip: auto;
-  background: var(--bg-elevated);
-  color: var(--fg);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius);
-  z-index: 200;
-}
-
-.site-nav {
-  position: sticky;
-  top: 0;
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border);
-  z-index: 50;
-}
-
-.site-nav nav {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-3) var(--space-4);
-}
-
-.nav-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  list-style: none;
-}
-
-.nav-toggle-label {
-  display: none;
-}
-
-main {
-  max-width: 72rem;
-  margin: 0 auto;
+.screen {
+  max-width: 68rem;
+  margin: var(--space-5) auto;
   padding: 0 var(--space-4);
 }
 
-.hero {
-  display: grid;
-  gap: var(--space-6);
-  padding: var(--space-8) 0;
+.screen > .window-chrome {
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
-.hero-actions {
+.site-menu {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: var(--space-2) var(--space-3);
+  overflow-x: auto;
+}
+
+.site-menu ul {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-5);
+  gap: var(--space-4);
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  white-space: nowrap;
 }
 
-.window-section {
-  padding: var(--space-6) 0;
-  border-top: 1px solid var(--border);
+.site-menu a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  padding: var(--space-1) 0;
+}
+
+.site-menu a::before {
+  content: './';
+  color: var(--border);
+}
+
+.site-menu a:hover,
+.site-menu a:focus-visible {
+  color: var(--fg);
+}
+
+.site-menu a[aria-current='page'] {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.screen-body {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: var(--space-5) var(--space-4);
+}
+
+.section + .section {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px dashed var(--border);
+}
+
+.section-heading {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: var(--step-1);
+  margin-bottom: var(--space-4);
+}
+
+.section-heading::before {
+  content: '## ';
+  color: var(--fg-muted);
 }
 
 .site-footer {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: var(--space-6) var(--space-4);
+  max-width: 68rem;
+  margin: var(--space-5) auto 0;
+  padding: 0 var(--space-4);
   color: var(--fg-muted);
   font-size: var(--step--1);
 }
 
-@media (min-width: 60rem) {
-  .hero {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-}
-
 @media (max-width: 40rem) {
-  .nav-toggle-label {
-    display: inline-block;
-    cursor: pointer;
-    padding: var(--space-2);
+  .screen {
+    margin: 0 auto;
+    padding: 0;
   }
 
-  .nav-list {
-    display: none;
-    flex-direction: column;
+  .screen-body {
+    padding: var(--space-4) var(--space-3);
   }
 
-  .nav-toggle-input:checked ~ .nav-list {
-    display: flex;
+  .section + .section {
+    margin-top: var(--space-6);
   }
 }

@@ -1,45 +1,44 @@
-.hero-terminal {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
+/* The command line. Fixed to the bottom of the viewport: it is how the site
+   is navigated, so it is never scrolled away. */
+
+.terminal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
   background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
   box-shadow: var(--shadow);
-}
-
-.hero-terminal .window-chrome {
-  border-radius: 0;
-}
-
-.terminal-body {
   font-family: var(--font-mono);
   font-size: var(--step--1);
-  padding: var(--space-3);
 }
 
 .terminal-output {
   display: block;
-  max-height: 14rem;
+  max-height: 9rem;
   overflow-y: auto;
+  padding: var(--space-2) var(--space-4) 0;
+  color: var(--fg-muted);
   white-space: pre-wrap;
-  margin-bottom: var(--space-2);
-  color: var(--fg);
+  overflow-wrap: anywhere;
 }
 
-.terminal-output::before {
-  content: "Try: help, whoami, ls projects, cat cv";
-  display: block;
-  color: var(--fg-muted);
-  margin-bottom: var(--space-2);
+.terminal-output > div {
+  padding: 0.1rem 0;
 }
 
 .terminal-input-line {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-top: 1px solid var(--border);
 }
 
 .terminal-prompt {
   color: var(--accent);
+  font-weight: 700;
 }
 
 .terminal-input {
@@ -50,19 +49,23 @@
   font-family: var(--font-mono);
   font-size: var(--step--1);
   caret-color: var(--accent);
-  animation: terminal-caret 1s step-end infinite;
 }
 
 .terminal-input:focus {
   outline: none;
 }
 
-@keyframes terminal-caret {
-  50% { caret-color: transparent; }
+.terminal-input-line:focus-within {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .terminal-input {
-    animation: none;
+.terminal-line {
+  font-family: var(--font-mono);
+  color: var(--fg-muted);
+}
+
+@media (max-width: 40rem) {
+  .terminal-output {
+    max-height: 6rem;
   }
 }

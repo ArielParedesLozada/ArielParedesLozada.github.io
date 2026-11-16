@@ -124,8 +124,8 @@ export const skills = [
   {
     id: 'backend',
     items: [
-      { name: 'Spring Boot', icon: null },
-      { name: '.NET', icon: null },
+      { name: 'Spring Boot', icon: 'images/tech/springboot.svg' },
+      { name: '.NET', icon: 'images/tech/dotnet.svg' },
       { name: 'Django', icon: 'images/tech/django.svg' },
       { name: 'Laravel', icon: 'images/tech/laravel.svg' },
     ],
@@ -133,24 +133,24 @@ export const skills = [
   {
     id: 'frontend',
     items: [
-      { name: 'React', icon: null },
-      { name: 'Angular', icon: null },
-      { name: 'Flutter', icon: null },
+      { name: 'React', icon: 'images/tech/react.svg' },
+      { name: 'Angular', icon: 'images/tech/angular.svg' },
+      { name: 'Flutter', icon: 'images/tech/flutter.svg' },
     ],
   },
   {
     id: 'databases',
     items: [
-      { name: 'Postgres', icon: null },
-      { name: 'MySQL', icon: null },
-      { name: 'Oracle', icon: null },
+      { name: 'Postgres', icon: 'images/tech/postgres.svg' },
+      { name: 'MySQL', icon: 'images/tech/mysql.svg' },
+      { name: 'Oracle', icon: 'images/tech/oracle.svg' },
     ],
   },
   {
     id: 'devops',
     items: [
-      { name: 'Docker', icon: null },
-      { name: 'GitHub Actions', icon: null },
+      { name: 'Docker', icon: 'images/tech/docker.svg' },
+      { name: 'GitHub Actions', icon: 'images/tech/githubactions.svg' },
       { name: 'Linux', icon: 'images/tech/linux.svg' },
     ],
   },

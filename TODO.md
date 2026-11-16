@@ -4,12 +4,20 @@ Las cosas que hay que mejorar en este portafolio web
 
 ## ESTADO (2026-11-15)
 
-Reconstruido desde cero en la rama `octavo` (sin plantilla ajena, sin
-framework, con terminal funcional en el hero). Ver `HANDOVER.md` para el
-detalle de qué falta llenar y los tres pasos manuales (CV, Formspree,
-capturas de proyectos). Todo lo desconocido queda marcado con el
-sentinel `PLACEHOLDER_PAPU` en `js/content.js`. Pendiente: revisar con
-`live-server` y mergear a `main` cuando se apruebe.
+Reconstruido en la rama `octavo` como **sitio multipagina generado**: seis
+paginas reales (`/`, `/about/`, `/skills/`, `/education/`, `/experience/`,
+`/contact/`) mas `404.html`, generadas por `node tools/build-pages.mjs`
+desde una sola plantilla. La terminal es el mecanismo de navegacion y esta
+fija al pie de cada pagina. Idioma conmutable en el cliente con
+`lang es` / `lang en`. Sin framework, sin dependencias, sin `package.json`.
+
+Ya no hay formulario de contacto. Los hobbies viven en `/about/#hobbies` y
+los eventos en `/experience/#events`.
+
+Ver `HANDOVER.md` para: como funciona el build, las 11 cosas que faltan
+llenar con su archivo y campo exactos, los dos pasos manuales (PDF del CV y
+los tres links de certificacion) y las decisiones que quizas quieras
+revisar. Pendiente: revisar con `live-server` y mergear a `main`.
 
 ## CONTEXTO
 
