@@ -44,3 +44,23 @@ export function label(key, lang = 'en') {
 export function isRealUrl(value) {
   return typeof value === 'string' && /^https?:\/\//.test(value);
 }
+
+// A labelled field. When the value is unknown the chip already carries the
+// label, so the prefix is dropped — otherwise the page reads
+// "Semester: Semester: pending".
+export function labelledField(labelKey, value, lang = 'en') {
+  if (value === PLACEHOLDER || value === undefined || value === null) {
+    return placeholderChip(labelKey, lang);
+  }
+  return `<span class="field-key">${label(labelKey, lang)}</span>${escapeHtml(value)}`;
+}
+
+// Same, for prose that lives in the dictionary under its own key.
+export function labelledProse(labelKey, key, lang = 'en') {
+  const value = t(key, lang);
+  if (value === PLACEHOLDER) return placeholderChip(labelKey, lang);
+  return (
+    `<span class="field-key">${label(labelKey, lang)}</span>` +
+    `<span data-i18n="${escapeHtml(key)}">${escapeHtml(value)}</span>`
+  );
+}

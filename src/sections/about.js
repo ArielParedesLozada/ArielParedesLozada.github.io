@@ -1,6 +1,6 @@
 import { profile, companies, education, hobbies } from '../content/data.js';
 import { t } from '../content/i18n.js';
-import { escapeHtml, label, proseOr } from './helpers.js';
+import { escapeHtml, label, proseOr, labelledProse } from './helpers.js';
 
 export function render(lang = 'en', assetPrefix = '') {
   const miniExperience = companies
@@ -32,10 +32,7 @@ export function render(lang = 'en', assetPrefix = '') {
           <div>
             <p class="about-name">${escapeHtml(profile.name)}</p>
             <p class="about-summary">${proseOr('section.about.summary', 'ui.summary', lang)}</p>
-            <p class="about-objective">
-              <span class="field-key">${label('ui.objective', lang)}</span>
-              ${proseOr('section.about.objective', 'ui.objective', lang)}
-            </p>
+            <p class="about-objective">${labelledProse('ui.objective', 'section.about.objective', lang)}</p>
           </div>
         </div>
 
